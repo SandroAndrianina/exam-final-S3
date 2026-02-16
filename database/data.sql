@@ -26,9 +26,9 @@ INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES
 (3, 200.00, '2023-10-06', 'Association Solidarite - Hygiène');
 
 
--- Insertion des distributions
--- On donne 300kg de riz sur les 500 demandés par Tana
--- On donne les 100 savons demandés par Antsirabe
+-- Distribution pour Tana (800.000 Ariary pris sur le Don ID 1)
+-- Distribution pour Antsirabe (30 tôles prises sur le Don ID 2)
 INSERT INTO distribution (gift_id, needs_id, attributed_quantity, affectation_date) VALUES 
-(1, 1, 300.00, NOW()),
-(2, 2, 100.00, NOW());
+(1, 1, 800000.00, NOW()), 
+(2, 2, 30.00, NOW());
+
