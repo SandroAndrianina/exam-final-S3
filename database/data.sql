@@ -7,11 +7,11 @@ INSERT INTO city (name) VALUES
 
 
 INSERT INTO article (name, type, unit) VALUES 
-('Riz', 'en nature', 'kg'),
-('Huile', 'en nature', 'litre'),
-('Tôle', 'en matériaux', 'pièce'),
-('Clou', 'en matériaux', 'kg'),
-('Fonds de secours', 'en argent', 'Ariary');
+('Riz', 'in kind', 'kg'),
+('Huile', 'in kind', 'litre'),
+('Tôle', 'materials', 'pièce'),
+('Clou', 'materials', 'kg'),
+('Fonds de secours', 'cash', 'Ariary');
 
 
 INSERT INTO needs (city_id, article_id, quantity_requested, creation_date) VALUES 
