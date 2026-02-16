@@ -1,0 +1,49 @@
+                    REQUÊTE HTTP (GET /users)
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │     CONTROLLER      │
+                    │  UserController.php │
+                    └─────────┬───────────┘
+                              │ Appelle le service
+                              ▼
+                    ┌─────────────────────┐
+                    │      SERVICE        │
+                    │   UserService.php   │ ←── Logique métier
+                    └─────────┬───────────┘    (validation, calculs, etc.)
+                              │ Utilise le repository
+                              ▼
+                    ┌─────────────────────┐
+                    │     REPOSITORY      │
+                    │  UserRepository.php │ ←── Accès DB (DAO)
+                    └─────────┬───────────┘
+                              │
+                    ┌─────────┴───────────┐
+                    │      BASE DE         │
+                    │      DONNÉES         │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │       MODELS        │
+                    │     User.php        │ ←── Entité (structure objet)
+                    └─────────┬───────────┘
+                              │
+                    ┌─────────┴───────────┐
+                    │        VIEW         │
+                    │  users_list.php     │ ←── Affichage (HTML)
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                   RÉPONSE HTTP (page HTML/JSON)
+
+EXPLICATION DES COMPOSANTS :
+Models : Représentent les entités/objets métier (comme les classes Java)
+
+Repositories : Gèrent l'accès aux données (comme les DAO en Java)
+
+Services : Contiennent la logique métier
+
+Controllers : Gèrent les requêtes HTTP et les réponses
+
+Views : Gèrent l'affichage (templates)
