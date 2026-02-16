@@ -1,7 +1,7 @@
 <?php
 namespace app\repositories;
 
-use app\models\User;
+use app\models\City;
 use PDO;
 
 class CityRepository

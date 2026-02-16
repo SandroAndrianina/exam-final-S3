@@ -13,15 +13,22 @@
 
         <section class="cities-list">
     <?php if(!empty($cities)) : ?>
-        <?php $longueur = count($cities); 
-        for($i = 0; $i < $longueur; $i++) { 
-            $p = $cities[$i]; ?>
-            <div class="cities-item">
-                <h4>
-                        <?php echo $p['name']; ?>
-                </h4>
-            </div>
-        <?php } ?>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($cities as $city) : ?>
+            <tr>
+            <td><?php echo $city->getId(); ?></td>
+            <td><?php echo $city->getName(); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
     <?php else : ?>
         <p>No city found.</p>
     <?php endif; ?>
