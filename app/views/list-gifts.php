@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of users</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <title>List of gifts</title>
+    <link rel="stylesheet" href="/assets/css/table.css">
 </head>
 <body>
     
     <main>
-        <h1>List of donations</h1>
+        <h1>List of gifts</h1>
 
         <section class="donations-list">
     <?php if(!empty($gifts)) : ?>

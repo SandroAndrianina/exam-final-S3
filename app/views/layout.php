@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echange Milay Corporation</title>
-    <link rel="stylesheet" href="/assets/css/model.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
 </head>
 <body>
 
