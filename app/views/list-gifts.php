@@ -12,7 +12,6 @@
     
     <div>
         <a href="/bngrc/form-gift" class="btn btn-primary">+ Ajouter un don</a>
-        <a href="/" class="btn">Retour à l'accueil</a>
     </div>
     
     <?php if (empty($gifts)): ?>

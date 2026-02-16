@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Don</title>
-    <link rel="stylesheet" href="/assets/table.css">
+    <link rel="stylesheet" href="/assets/css/table.css">
 </head>
 <body>
     <h2>Formulaire : Don</h2>
