@@ -1,33 +1,48 @@
-CREATE DATABASE prepa_exam_S3_takalo;
-USE prepa_exam_S3_takalo;
-
-CREATE TABLE user (
-    id_user INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE,
-    password VARCHAR(255)
-) ENGINE=InnoDB;
+CREATE DATABASE IF NOT EXISTS ETU4392_ETU4110_ETU4016;
+USE ETU4392_ETU4110_ETU4016;
 
 
-CREATE TABLE object_exchange (
+CREATE TABLE city (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
-    id_user INT NOT NULL,
-    image VARCHAR(255),
-    CONSTRAINT fk_object_user FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE
+    name VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB;
 
 
-CREATE TABLE exchange (
-    id_exchange INT AUTO_INCREMENT PRIMARY KEY,
-    id_sender INT,
-    id_receiver INT,
-    id_obj_sender INT,   -- L'objet proposé par l'initiateur
-    id_obj_receiver INT, -- L'objet souhaité en retour
-    status ENUM('pending', 'approved', 'rejected', 'cancelled') DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_sender) REFERENCES user(id_user),
-    FOREIGN KEY (id_receiver) REFERENCES user(id_user),
-    FOREIGN KEY (id_obj_sender) REFERENCES object_exchange(id),
-    FOREIGN KEY (id_obj_receiver) REFERENCES object_exchange(id)
-);
+CREATE TABLE article (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type ENUM('in kind', 'materials', 'cash') NOT NULL,
+    unit VARCHAR(20) NOT NULL -- kg, pièce, litre ou Ariary
+) ENGINE=InnoDB;
+
+
+CREATE TABLE needs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    city_id INT,
+    article_id INT,
+    quantity_requested DECIMAL(15,2) NOT NULL,
+    creation_date DATE NOT NULL,
+    CONSTRAINT fk_needs_city FOREIGN KEY (city_id) REFERENCES city(id),
+    CONSTRAINT fk_needs_article FOREIGN KEY (article_id) REFERENCES article(id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE gift (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT,
+    total_quantity DECIMAL(15,2) NOT NULL,
+    donation_date DATE NOT NULL,
+    description TEXT,
+    CONSTRAINT fk_gift_article FOREIGN KEY (article_id) REFERENCES article(id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE distribution (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gift_id INT,
+    needs_id INT,
+    attributed_quantity DECIMAL(15,2) NOT NULL,
+    affectation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_distrib_gift FOREIGN KEY (gift_id) REFERENCES gift(id),
+    CONSTRAINT fk_distrib_needs FOREIGN KEY (needs_id) REFERENCES needs(id)
+) ENGINE=InnoDB;

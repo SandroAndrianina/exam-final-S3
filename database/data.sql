@@ -1,34 +1,34 @@
-INSERT INTO user (name, email, password) VALUES 
-('Alice', 'alice@email.com', 'alice123'),
-('Bob', 'bob@email.com', 'bob456'),
-('Charlie', 'charlie@email.com', 'charlie789');
+INSERT INTO city (name) VALUES 
+('Antananarivo'), 
+('Antsirabe'), 
+('Toamasina'), 
+('Fianarantsoa'), 
+('Mahajanga');
 
 
-INSERT INTO object_exchange (name, id_user, image) VALUES 
--- Objets de Alice (id_user = 1)
-('Guitare Yamaha', 1, 'guitare.jpg'),
-('Ampli Fender', 1, 'ampli.jpg'),
-('Livre - Apprendre le PHP', 1, 'livre_php.jpg'),
-('Microphone Blue Yeti', 1, 'micro.jpg'),
-('Casque Audio Sony', 1, 'casque.jpg'),
--- Objets de Bob (id_user = 2)
-('Appareil Photo Nikon', 2, 'nikon.jpg'),
-('Objectif 50mm', 2, 'objectif.jpg'),
-('Trépied Aluminium', 2, 'trepied.jpg'),
-('Sac à dos photo', 2, 'sac_photo.jpg'),
-('Carte SD 128Go', 2, 'sd_card.jpg'),
--- Objets de Charlie (id_user = 3)
-('Vélo de course', 3, 'velo.jpg'),
-('Casque de vélo', 3, 'casque_velo.jpg'),
-('Pompe à vélo', 3, 'pompe.jpg'),
-('Antivol Haute Sécurité', 3, 'antivol.jpg'),
-('Gants de cyclisme', 3, 'gants.jpg');
+INSERT INTO article (name, type, unit) VALUES 
+('Riz', 'en nature', 'kg'),
+('Huile', 'en nature', 'litre'),
+('Tôle', 'en matériaux', 'pièce'),
+('Clou', 'en matériaux', 'kg'),
+('Fonds de secours', 'en argent', 'Ariary');
 
 
-INSERT INTO exchange (id_sender, id_receiver, id_obj_sender, id_obj_receiver, status) VALUES 
-(1, 2, 1, 2, 'pending'); -- Échange en attente entre Alice et Bob
+INSERT INTO needs (city_id, article_id, quantity_requested, creation_date) VALUES 
+(1, 5, 1000000.00, '2026-02-16'), -- Tana demande 1.000.000 Ariary exemple ohatra
+(2, 3, 50.00, '2026-02-16'); -- Antsirabe demande 50 pièces de tôles 
 
--------------------
-SELECT * FROM object_exchange; -> Par rapport a findAllObj()
-SELECT * FROM user; -> Par rapport a findAllUsers()
-SELECT * FROM exchange; -> Par rapport a findAllExchanges()
+
+-- Insertion des dons (gift)
+-- Un donateur offre 1000kg de riz / Un autre offre 200 savons
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+(1, 1000.00, '2023-10-05', 'Don anonyme - Stock riz'),
+(3, 200.00, '2023-10-06', 'Association Solidarite - Hygiène');
+
+
+-- Insertion des distributions
+-- On donne 300kg de riz sur les 500 demandés par Tana
+-- On donne les 100 savons demandés par Antsirabe
+INSERT INTO distribution (gift_id, needs_id, attributed_quantity, affectation_date) VALUES 
+(1, 1, 300.00, NOW()),
+(2, 2, 100.00, NOW());

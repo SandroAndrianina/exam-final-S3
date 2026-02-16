@@ -25,8 +25,11 @@ ETAPE 2: (Business)
  
 ETAPE 3: (Database)
  * Liste tables SQL:
-     - object_exchange (id, name, id_user, image)
-     - user (id_user, name)
-     - exchange (id_exchange, id_sender, id_receiver, id_obj_sender, id_obj_receiver)
+     - city (id(PK), name)
+     - article (id(PK), name, type, unit)
+     - needs (id(PK), city_id(FK de city), article_id(FK de article), quantity_requested, creation_date)
+     - gift (id(PK), article_id(FK de article), total_quantity, donation_date, description)
+     - distribution (id(PK), gift_id(FK de gift), needs_id(FK de needs), attributed_quantity, affectation_date)
+
 
 
