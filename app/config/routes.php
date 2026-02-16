@@ -8,6 +8,8 @@ use app\repositories\GiftRepository;
 use app\controllers\NeedController;
 use app\repositories\NeedRepository;
 use app\repositories\ArticleRepository;
+use app\controllers\NeedsGiftController;
+use app\services\CityService;
 
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -32,6 +34,14 @@ $router->group('', function(Router $router) use ($app) {
         new CityRepository(Flight::db()),
         new ArticleRepository(Flight::db())
     );
+    
+    $NeedsGiftController = new NeedsGiftController(
+        $app, 
+        new CityService(
+            new NeedRepository(Flight::db()), 
+            new GiftRepository(Flight::db())
+        )
+    );
 
     $router->get('/', function() use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
@@ -50,5 +60,7 @@ $router->group('', function(Router $router) use ($app) {
     $router->post('/bngrc/form-need', [$NeedController, 'create']);
     $router->get('/bngrc/list-needs', [$NeedController, 'showList']);
     $router->get('/bngrc/needs/delete/@id', [$NeedController, 'delete']);
+    $router->get('/bngrc/city/@cityId/details', [$NeedsGiftController, 'showDetails']);
+
 
 }, [SecurityHeadersMiddleware::class]);

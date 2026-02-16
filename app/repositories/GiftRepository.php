@@ -114,4 +114,21 @@ class GiftRepository
         
         return $stmt->execute(['id' => $id]);
     }
+
+    public function getGiftsByNeedId(int $needId): array
+    {
+        $sql = "SELECT g.id, g.article_id, g.total_quantity, g.donation_date, g.description,
+                   d.attributed_quantity, d.affectation_date,
+                   a.name as article_name, a.unit
+            FROM distribution d
+            JOIN gift g ON d.gift_id = g.id
+            JOIN article a ON g.article_id = a.id
+            WHERE d.needs_id = :needId
+            ORDER BY d.affectation_date DESC";
+    
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['needId' => $needId]);
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

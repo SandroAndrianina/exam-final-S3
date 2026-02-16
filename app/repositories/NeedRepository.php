@@ -46,8 +46,6 @@ class NeedRepository
         
         return $needs;
     }
-    
-  
 
     public function findById(int $id): ?Need
     {
@@ -73,8 +71,6 @@ class NeedRepository
         return $need;
     }
     
-   
-
     public function create(Need $need): bool
     {
         $sql = "INSERT INTO needs (city_id, article_id, quantity_requested, creation_date) 
@@ -90,8 +86,6 @@ class NeedRepository
         ]);
     }
     
-  
-
     public function update(Need $need): bool
     {
         $sql = "UPDATE needs 
@@ -112,13 +106,26 @@ class NeedRepository
         ]);
     }
     
-    
-    
     public function delete(int $id): bool
     {
         $sql = "DELETE FROM needs WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         
         return $stmt->execute(['id' => $id]);
+    }
+
+    public function getNeedsByCityId(int $cityId): array
+    {
+        $sql = "SELECT n.id, n.city_id, n.article_id, n.quantity_requested, n.creation_date,
+                    a.name as article_name, a.type, a.unit
+                FROM needs n
+                JOIN article a ON n.article_id = a.id
+                WHERE n.city_id = :cityId
+                ORDER BY a.type, a.name";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['cityId' => $cityId]);
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
