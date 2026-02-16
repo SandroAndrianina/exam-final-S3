@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Besoin</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/css/table.css">
 </head>
 <body>
     
@@ -47,7 +47,7 @@
             </select>
         </div>
 
-        
+
         <div class="form-group">
             <label for="quantite">Quantité :</label>
             <input type="number" step="0.01" name="quantity_requested" id="quantite" placeholder="Ex: 500.00" required>
