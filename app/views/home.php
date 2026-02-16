@@ -6,8 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/exchange/list-users" class="btn">Liste of users</a>
-    <a href="/exchange/list-objets" class="btn">List of objects</a>
-    <!-- <a href="/list-propositions.php" class="btn">Liste des propositions</a> -->
+    <a href="/bngrc/list-cities" class="btn">List of cities</a>
+    <a href="/bngrc/list-donations" class="btn">List of donations</a>
 </body>
 </html>
+
+
