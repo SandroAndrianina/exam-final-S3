@@ -39,8 +39,8 @@
                     ?>
                     <tr>
                         <td><?= $need->getId() ?></td>
-                        <td><?= htmlspecialchars($city_name) ?></td>
-                        <td><?= htmlspecialchars($article_name) ?></td>
+                        <td><?= ($city_name) ?></td>
+                        <td><?= ($article_name) ?></td>
                         <td><?= number_format($need->getQuantityRequested(), 2) ?> <?= htmlspecialchars($unit) ?></td>
                         <td><?= date('d/m/Y', strtotime($need->getCreationDate())) ?></td>
                         <td>

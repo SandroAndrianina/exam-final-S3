@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+
 class Article
 {
     private ?int $id = null;
