@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-class DistributionModel
+class Distribution
 {
     private ?int $id = null;
     private int $gift_id;
