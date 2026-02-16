@@ -69,7 +69,7 @@ return [
 		// MySQL Example:
 		'host'     => '127.0.0.1',
 		'port'	   => '3306',      // Database host (e.g., 'localhost', 'db.example.com')
-		'dbname'   => 'prepa_exam_S3_takalo',   // Database name (e.g., 'flightphp')
+		'dbname'   => 'ETU4392_ETU4110_ETU4016',   // Database name (e.g., 'flightphp')
 		'user'     => 'root',  // Database user (e.g., 'root')
 		'password' => '',  // Database password (never commit real passwords)
 
