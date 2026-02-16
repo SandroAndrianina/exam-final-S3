@@ -2,38 +2,26 @@ TODOLIST SITE WEB D'ECHANGE D'OBJETS:
 ------------------------------------------
 ETAPE 1: (Presentation)
  * Pages importants:
-     (MIHAJA)-list-user.php
-     -list-objet-by-user.php
-     -exchanges.php
-     (MIHAJA)-list-objets.php
-     -list-propositons.php
-     -home.php
+        -Home.php:
+        -list-city.php
+        -detail-needs&donations.php
+        -disaster-victims-needs.php (formulaire)
+        -donation-collection.php (formulaire)
+        -donation-distribution.php (formulaire)
 
 ETAPE 2: (Business)
     Models:
-        - ObjectExchange.php
-        - User.php
-        - Exchange.php
+        -City.php
+        
     Repositories:
-        - ObjectExchangeRepository.php
-            |(JONATHAN)-> findAllObj(), 
-            findObjectByUserId(user_id)
-        - UserRepository.php
-            |(JONATHAN)-> findAllUsers() 
-        - ExchangeRepository.php
-            |-> findAllExchanges(), saveExchange(Exchange)
+        -CityRepository.php
+
     Services:
-        - ObjectExchangeService.php
-        - UserService.php
-        - ExchangeService.php
-    Controller:
-        - ObjectExchangeController.php
-            |OK-(SANDRO)-> showAllObj() -> Miantso an le findAllObj()
-            |-> showObjByUserId()
-        - UserController.php
-            |OK-(SANDRO)-> showAllUsers() -> Miantso an le findAllUsers()
-        - ExchangeController.php
-            |-> saveExchange() -> Miantso an le saveExchange() ao am le Repositories
+        -CityService.php
+
+    Controllers:
+        -CityController.php
+
  
 ETAPE 3: (Database)
  * Liste tables SQL:
