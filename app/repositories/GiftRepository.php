@@ -13,16 +13,15 @@ class GiftRepository
         $this->db = $db;
     }
     
-    /**
-     * Récupérer tous les dons avec informations des articles
-     */
+    
+
     public function findAll(): array
     {
         $sql = "SELECT g.id, g.article_id, g.total_quantity, g.donation_date, g.description,
                        a.name as article_name, a.unit
                 FROM gift g
                 JOIN article a ON g.article_id = a.id
-                ORDER BY g.donation_date DESC";
+                ORDER BY g.donation_date ASC";
         
         $stmt = $this->db->query($sql);
         $gifts = [];
@@ -43,9 +42,8 @@ class GiftRepository
         return $gifts;
     }
     
-    /**
-     * Trouver un don par son ID
-     */
+
+
     public function findById(int $id): ?Gift
     {
         $sql = "SELECT id, article_id, total_quantity, donation_date, description 
@@ -68,9 +66,8 @@ class GiftRepository
         return $gift;
     }
     
-    /**
-     * Créer un nouveau don
-     */
+    
+
     public function create(Gift $gift): bool
     {
         $sql = "INSERT INTO gift (article_id, total_quantity, donation_date, description) 
@@ -86,9 +83,8 @@ class GiftRepository
         ]);
     }
     
-    /**
-     * Mettre à jour un don
-     */
+    
+
     public function update(Gift $gift): bool
     {
         $sql = "UPDATE gift 
@@ -109,9 +105,8 @@ class GiftRepository
         ]);
     }
     
-    /**
-     * Supprimer un don
-     */
+
+    
     public function delete(int $id): bool
     {
         $sql = "DELETE FROM gift WHERE id = :id";

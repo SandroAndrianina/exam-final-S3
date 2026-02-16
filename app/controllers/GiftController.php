@@ -23,9 +23,8 @@ class GiftController
         $this->articleRepository = $articleRepository;
     }
 
-    /**
-     * Afficher le formulaire de création d'un don
-     */
+    
+
     public function showCreateForm()
     {
         $articles = $this->articleRepository->findAll();
@@ -37,14 +36,12 @@ class GiftController
         ]);
     }
 
-    /**
-     * Traiter la soumission du formulaire
-     */
+
+
     public function create()
     {
         $errors = [];
         
-        // Validation des données
         $article_id = (int) $this->app->request()->data->article_id ?? 0;
         $total_quantity = (float) $this->app->request()->data->total_quantity ?? 0;
         $donation_date = $this->app->request()->data->donation_date ?? '';
@@ -95,9 +92,8 @@ class GiftController
         }
     }
 
-    /**
-     * Afficher la liste de tous les dons
-     */
+    
+
     public function showAllGifts()
     {
         $gifts = $this->giftRepository->findAll();
@@ -109,9 +105,8 @@ class GiftController
         ]);
     }
 
-    /**
-     * Supprimer un don
-     */
+    
+    
     public function delete(int $id)
     {
         if ($this->giftRepository->delete($id)) {
