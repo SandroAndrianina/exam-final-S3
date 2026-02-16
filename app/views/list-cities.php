@@ -13,22 +13,26 @@
 
         <section class="cities-list">
     <?php if(!empty($cities)) : ?>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach($cities as $city) : ?>
+        <table>
+            <thead>
             <tr>
-            <td><?php echo $city->getId(); ?></td>
-            <td><?php echo $city->getName(); ?></td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php foreach($cities as $city) : ?>
+                <tr>
+                <td><?php echo $city->getId(); ?></td>
+                <td><?php echo $city->getName(); ?></td>
+                <td>
+                    <a href="/bngrc/city/<?= $city->getId() ?>/details" class="btn-more">More</a>
+                </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else : ?>
         <p>No city found.</p>
     <?php endif; ?>

@@ -27,4 +27,20 @@ class CityRepository
         
         return $cities;
     }
+
+        public function findById(int $id): ?City
+        {
+            $sql = "SELECT id, name FROM city WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(['id' => $id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$row) {
+                return null;
+            }
+            
+            $city = new City($row['name']);
+            $city->setId($row['id']);
+            return $city;
+        }
 }
