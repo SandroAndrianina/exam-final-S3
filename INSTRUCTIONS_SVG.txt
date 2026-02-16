@@ -1,0 +1,61 @@
+📍 INSTRUCTIONS - Intégration du fichier SVG de Madagascar
+===========================================================
+
+## ✅ Étape 1 : Placer votre fichier SVG
+
+1. Copiez votre fichier SVG de Madagascar depuis votre PC
+2. Renommez-le en : **madagascar.svg**
+3. Collez-le dans le dossier :
+   
+   📁 public/assets/images/madagascar.svg
+
+   Chemin complet :
+   c:\Users\ranai\OneDrive\Documents\GitHub\exam-final-S3\public\assets\images\madagascar.svg
+
+
+## ✅ Étape 2 : Alternative - Intégration directe du code SVG
+
+Si votre fichier SVG est petit, vous pouvez aussi coller directement le code SVG 
+dans le fichier home.php :
+
+1. Ouvrez votre fichier SVG avec un éditeur de texte (Notepad++)
+2. Copiez tout le code <svg>...</svg>
+3. Dans app/views/home.php, ligne ~260, remplacez :
+   
+   <object data="/assets/images/madagascar.svg" type="image/svg+xml">
+       <img src="/assets/images/madagascar.svg" alt="Carte de Madagascar">
+   </object>
+
+   Par votre code SVG directement :
+   
+   <svg viewBox="0 0 WIDTH HEIGHT" xmlns="http://www.w3.org/2000/svg">
+       ... votre code SVG ...
+   </svg>
+
+
+## ✅ Étape 3 : Vérifier le rendu
+
+1. Démarrez votre serveur PHP
+2. Accédez à : http://localhost/
+3. Votre carte de Madagascar devrait s'afficher
+
+
+## 🎨 Personnalisation (optionnel)
+
+Pour changer les couleurs de la légende, modifiez les styles dans home.php :
+
+.legend-color { background: #VOTRE_COULEUR; }
+
+
+## 📝 Notes
+
+- Le SVG s'adapte automatiquement à la taille de l'écran (responsive)
+- Les styles CSS de la sidebar et des liens restent inchangés
+- Design simple et authentique sans JavaScript
+- La carte est centrée avec un fond clair (#f8f9fa)
+
+
+Besoin d'aide ? Vérifiez que :
+- Le fichier madagascar.svg existe bien dans public/assets/images/
+- Le nom du fichier est correct (pas d'espaces, minuscules)
+- Le serveur PHP est démarré
