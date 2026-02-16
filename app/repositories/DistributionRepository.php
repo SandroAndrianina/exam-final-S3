@@ -52,4 +52,5 @@ class DistributionRepository
            $result = $stmt->fetch(PDO::FETCH_ASSOC);
              return $result['id'] ?? 0;
     }
+
 }

@@ -24,7 +24,6 @@ $router->group('', function(Router $router) use ($app) {
 
     $router->get('/bngrc/list-cities', [$CityController, 'showAllCities']);
 
-    $router->post('/bngrc/distribution', [$DistributionController, 'createDistribution']);
-
+    $router->post('/bngrc/distribution', [$DistributionController, '']);
 
 }, [SecurityHeadersMiddleware::class]);

@@ -32,5 +32,16 @@ class DistributionController
         Flight::redirect('/Donation-distribution.php');
     }
 
+
+    public function treatment() {
+        $giftName = $_POST['gift_id'];
+        $giftId = $this->DistributionRepository->getNameById($giftName);
+        $distribution = new Distribution();
+        $distribution->setGiftId($giftId);
+        $distribution->setAttributedQuantity($_POST['attributed_quantity']);
+        $this->DistributionRepository->save($distribution);
+         Flight::redirect('/Donation-distribution.php');
+    }
+
     
 }

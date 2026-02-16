@@ -8,8 +8,13 @@
 <body>
     <h2>Distribution of donation</h2>
     <h3>Formulaire</h3>
-    <form action="/Donation-distribution.php" method="post">
-        <input type="text" name="gift_id" id="gift_id" placeholder="Gift ID">
+    <form action="/bngrc/distribution" method="post">
+            <label for="gift_id">Sélectionnez un don :</label>
+        <select name="gift_id" id="gift_id" required>
+            <?php foreach ($gifts as $gift): ?>
+                <option value="<?= $gift->getId() ?>"><?= $gift->getName() ?></option>
+            <?php endforeach; ?>
+        </select>
         <input type="number" name="attributed_quantity" id="attributed_quantity" placeholder="Attributed Quantity">
         <button type="submit">Create Distribution</button>
     </form>
