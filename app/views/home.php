@@ -9,6 +9,7 @@
 </head>
 <body>
     <a href="/bngrc/list-cities" class="btn">List of cities</a>
+    <a href="/bngrc/form-gift" class="btn">Form of gifts</a>
     <a href="/bngrc/list-gifts" class="btn">List of gifts</a>
     <a href="/bngrc/list-donations" class="btn">List of donations</a>
     <a href="/bngrc/form-need" class="btn">Form of needs</a>

@@ -21,7 +21,11 @@ use flight\net\Router;
 $router->group('', function(Router $router) use ($app) {
 
     $CityController = new CityController($app, new CityRepository(Flight::db()));
-    $GiftController = new GiftController($app, new GiftRepository(Flight::db()));
+    $GiftController = new GiftController(
+        $app, 
+        new GiftRepository(Flight::db()),
+        new ArticleRepository(Flight::db())
+    );
     $NeedController = new NeedController(
         $app, 
         new NeedRepository(Flight::db()),
@@ -35,7 +39,12 @@ $router->group('', function(Router $router) use ($app) {
 
     $router->get('/bngrc/list-cities', [$CityController, 'showAllCities']);
 
+    // Routes pour la gestion des dons
+    $router->get('/bngrc/form-gift', [$GiftController, 'showCreateForm']);
+    $router->post('/bngrc/form-gift', [$GiftController, 'create']);
     $router->get('/bngrc/list-gifts', [$GiftController, 'showAllGifts']);
+    $router->get('/bngrc/gifts/delete/@id', [$GiftController, 'delete']);
+
     // Routes pour la gestion des besoins
     $router->get('/bngrc/form-need', [$NeedController, 'showCreateForm']);
     $router->post('/bngrc/form-need', [$NeedController, 'create']);
