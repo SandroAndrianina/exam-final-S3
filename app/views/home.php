@@ -7,7 +7,7 @@
 </head>
 <body>
     <a href="/bngrc/list-cities" class="btn">List of cities</a>
-    <a href="/bngrc/list-donations" class="btn">List of donations</a>
+    <a href="/bngrc/list-gifts" class="btn">List of donations</a>
 </body>
 </html>
 
