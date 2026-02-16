@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echange Milay Corporation</title>
+    <title>Project Corporation</title>
     <link rel="stylesheet" href="/assets/css/model.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             <!-- <img src="/assets/images/home.png" alt="Home Icon"> -->
             Home
         </a>
-        <div class="company-name">Takalo-Takalo Corporation</div>
+        <div class="company-name">Project Corporation</div>
     </header>
 
     <main>

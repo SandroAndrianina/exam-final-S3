@@ -16,16 +16,16 @@ use flight\net\Router;
 
 $router->group('', function(Router $router) use ($app) {
 
-    $ObjectExchangeController = new ObjectExchangeController($app, new ObjectExchangeRepository(Flight::db()));
-    $UserController = new UserController($app, new UserRepository(Flight::db()));
+    // $ObjectExchangeController = new ObjectExchangeController($app, new ObjectExchangeRepository(Flight::db()));
+    // $UserController = new UserController($app, new UserRepository(Flight::db()));
 
-    $router->get('/', function() use ($app) {
-        $app->render('layout.php', ['page' => 'home.php']);
-    });
+    // $router->get('/', function() use ($app) {
+    //     $app->render('layout.php', ['page' => 'home.php']);
+    // });
 
 
-    $router->get('/exchange/list-objets', [$ObjectExchangeController, 'showAllObjects']);
+    // $router->get('/exchange/list-objets', [$ObjectExchangeController, 'showAllObjects']);
 
-    $router->get('/exchange/list-users', [$UserController, 'showAllUsers']);
+    // $router->get('/exchange/list-users', [$UserController, 'showAllUsers']);
 
 }, [SecurityHeadersMiddleware::class]);
