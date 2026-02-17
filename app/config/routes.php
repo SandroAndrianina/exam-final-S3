@@ -81,6 +81,9 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/bngrc/form-purchase', [$PurchaseController, 'showCreateForm']);
     $router->post('/bngrc/form-purchase', [$PurchaseController, 'create']);
     $router->get('/bngrc/list-purchases', [$PurchaseController, 'showList']);
+    $router->get('/bngrc/purchases/edit/@id', [$PurchaseController, 'showEditForm']);
+    $router->post('/bngrc/purchases/edit/@id', [$PurchaseController, 'update']);
+    $router->get('/bngrc/purchases/delete/@id', [$PurchaseController, 'delete']);
     
     // Routes pour le tableau de bord
     $router->get('/bngrc/dashboard', [$DashboardController, 'showDashboard']);

@@ -40,6 +40,15 @@
             font-weight: bold;
             color: #4caf50;
         }
+        .btn-danger {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-danger:hover {
+            background-color: #da190b;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +94,7 @@
                     <th>Prix unitaire</th>
                     <th>Montant total</th>
                     <th>Description</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,16 +111,17 @@
                         <td><?= number_format($purchase['unit_price'], 2, ',', ' ') ?> Ar</td>
                         <td class="amount"><?= number_format($purchase['total_amount'], 2, ',', ' ') ?> Ar</td>
                         <td><?= htmlspecialchars($purchase['description'] ?? '-') ?></td>
+                        <td>
+                            <a href="/bngrc/purchases/edit/<?= $purchase['id'] ?>" class="btn-secondary" style="padding: 5px 10px; font-size: 12px; text-decoration: none; display: inline-block; margin-right: 5px;">Modifier</a>
+                            <a href="/bngrc/purchases/delete/<?= $purchase['id'] ?>" 
+                               class="btn-danger" 
+                               style="padding: 5px 10px; font-size: 12px; text-decoration: none; display: inline-block; background-color: #f44336;"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet achat ?');">Supprimer</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="5" style="text-align: right;">Total <?= isset($city_filter) ? '(ville sélectionnée)' : '' ?> :</th>
-                    <th class="amount"><?= number_format($total, 2, ',', ' ') ?> Ar</th>
-                    <th></th>
-                </tr>
-            </tfoot>
+            
         </table>
     <?php endif; ?>
 </body>

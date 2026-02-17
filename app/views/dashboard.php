@@ -4,108 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord</title>
-    <link rel="stylesheet" href="/assets/css/form.css">
-    <style>
-        .dashboard-container {
-            padding: 20px;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .stat-card.success {
-            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-        }
-        .stat-card.info {
-            background: linear-gradient(135deg, #2196F3 0%, #1976d2 100%);
-        }
-        .stat-card.warning {
-            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-        }
-        .stat-card.primary {
-            background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
-        }
-        .stat-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .stat-card .value {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .stat-card .subtitle {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        .refresh-section {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .btn-refresh {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn-refresh:hover {
-            background-color: #45a049;
-        }
-        .purchases-by-city {
-            margin-top: 30px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #667eea;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        .amount {
-            font-weight: bold;
-            color: #4caf50;
-        }
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 10px;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/table.css">
+    
 </head>
 <body>
     <div class="dashboard-container">
         <h2>Tableau de Bord - Récapitulatif</h2>
         
         <div class="refresh-section">
-            <button class="btn-refresh" onclick="refreshData()">🔄 Actualiser les données</button>
+            <button class="btn-refresh" onclick="refreshData()">Actualiser les données</button>
             <div class="loading" id="loading">Chargement...</div>
         </div>
         

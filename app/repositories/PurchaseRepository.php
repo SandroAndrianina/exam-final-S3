@@ -114,4 +114,36 @@ class PurchaseRepository
         
         return $totalCash - $totalSpent;
     }
+
+    public function delete(int $id): bool
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM purchase WHERE id = :id");
+        return $stmt->execute(['id' => $id]);
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $stmt = $this->pdo->prepare("
+            UPDATE purchase 
+            SET city_id = :city_id,
+                article_id = :article_id,
+                quantity = :quantity,
+                unit_price = :unit_price,
+                total_amount = :total_amount,
+                purchase_date = :purchase_date,
+                description = :description
+            WHERE id = :id
+        ");
+        
+        return $stmt->execute([
+            'id' => $id,
+            'city_id' => $data['city_id'],
+            'article_id' => $data['article_id'],
+            'quantity' => $data['quantity'],
+            'unit_price' => $data['unit_price'],
+            'total_amount' => $data['total_amount'],
+            'purchase_date' => $data['purchase_date'],
+            'description' => $data['description']
+        ]);
+    }
 }

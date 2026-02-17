@@ -73,19 +73,11 @@
         
         <div class="form-group">
             <label for="quantity">Quantité :</label>
-            <input type="number" step="0.01" name="quantity" id="quantity" placeholder="Ex: 100" required onchange="updateTotal()">
+            <input type="number" step="0.01" name="quantity" id="quantity" placeholder="Ex: 100" required oninput="updateTotal()">
             <span id="unit-display"></span>
         </div>
         
-        <div class="form-group">
-            <label>Prix unitaire :</label>
-            <span id="unit-price-display" class="price-display">0.00 Ar</span>
-        </div>
         
-        <div class="form-group">
-            <label>Montant total :</label>
-            <span id="total-amount-display" class="price-display">0.00 Ar</span>
-        </div>
 
         <div class="form-group">
             <label for="purchase_date">Date d'achat :</label>
