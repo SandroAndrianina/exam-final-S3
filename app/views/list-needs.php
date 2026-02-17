@@ -10,6 +10,18 @@
     
     <h2>Liste des Besoins</h2>
     
+    <?php if (isset($_GET['success'])): ?>
+        <div class="success" style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 10px; margin: 10px 0; border-radius: 4px;">
+            <p><?= htmlspecialchars($_GET['success']) ?></p>
+        </div>
+    <?php endif; ?>
+    
+    <?php if (isset($_GET['error'])): ?>
+        <div class="errors" style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 10px; margin: 10px 0; border-radius: 4px;">
+            <p><?= htmlspecialchars($_GET['error']) ?></p>
+        </div>
+    <?php endif; ?>
+    
     <div>
         <a href="/bngrc/form-need" class="btn btn-primary">+ Ajouter un besoin</a>
     </div>
@@ -45,7 +57,7 @@
                         <td>
                             <a href="/bngrc/needs/delete/<?= $need->getId() ?>" 
                                class="btn btn-danger" 
-                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce besoin ?')">
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce besoin ? Les distributions associées seront également supprimées.')">>
                                 Supprimer
                             </a>
                         </td>

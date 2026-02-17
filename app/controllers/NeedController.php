@@ -118,9 +118,9 @@ class NeedController
     public function delete(int $id)
     {
         if ($this->needRepository->delete($id)) {
-            $this->app->redirect('/bngrc/list-needs');
+            $this->app->redirect('/bngrc/list-needs?success=Besoin supprimé avec succès (ainsi que ses distributions)');
         } else {
-            $this->app->halt(500, 'Erreur lors de la suppression');
+            $this->app->redirect('/bngrc/list-needs?error=Erreur lors de la suppression');
         }
     }
 
