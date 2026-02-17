@@ -101,7 +101,7 @@ class PurchaseRepository
     {
         // Total des dons en argent
         $stmt = $this->pdo->query("
-            SELECT COALESCE(SUM(g.amount), 0) as total_cash
+            SELECT COALESCE(SUM(g.total_quantity), 0) as total_cash
             FROM gift g
             LEFT JOIN article a ON g.article_id = a.id
             WHERE a.type = 'cash'

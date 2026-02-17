@@ -32,11 +32,11 @@ class DashboardController
         $stats = $this->getStatistics();
         $purchasesByCity = $this->purchaseRepository->getTotalAmountByCity();
         
-        Flight::render('dashboard.php', [
+        Flight::render('layout.php', [
+            'page' => 'dashboard.php',
             'stats' => $stats,
             'purchasesByCity' => $purchasesByCity
-        ], 'content');
-        Flight::render('layout.php');
+        ]);
     }
 
     public function refreshData(): void
@@ -54,7 +54,7 @@ class DashboardController
     {
         // Total des besoins (en montant)
         $stmt = $this->pdo->query("
-            SELECT COALESCE(SUM(n.amount * a.unit_price), 0) as total_needs_amount
+            SELECT COALESCE(SUM(n.quantity_requested * a.unit_price), 0) as total_needs_amount
             FROM needs n
             LEFT JOIN article a ON n.article_id = a.id
         ");
@@ -62,9 +62,10 @@ class DashboardController
 
         // Besoins satisfaits (en montant) - basé sur la table distribution
         $stmt = $this->pdo->query("
-            SELECT COALESCE(SUM(d.amount * a.unit_price), 0) as satisfied_needs_amount
+            SELECT COALESCE(SUM(d.attributed_quantity * a.unit_price), 0) as satisfied_needs_amount
             FROM distribution d
-            LEFT JOIN article a ON d.article_id = a.id
+            LEFT JOIN needs n ON d.needs_id = n.id
+            LEFT JOIN article a ON n.article_id = a.id
         ");
         $satisfiedNeedsAmount = (float) $stmt->fetch(PDO::FETCH_ASSOC)['satisfied_needs_amount'];
 
@@ -72,8 +73,8 @@ class DashboardController
         $stmt = $this->pdo->query("
             SELECT COALESCE(SUM(
                 CASE 
-                    WHEN a.type = 'cash' THEN g.amount
-                    ELSE g.amount * a.unit_price
+                    WHEN a.type = 'cash' THEN g.total_quantity
+                    ELSE g.total_quantity * a.unit_price
                 END
             ), 0) as total_gifts_amount
             FROM gift g
@@ -83,9 +84,10 @@ class DashboardController
 
         // Dons dispatchés (en montant) - basé sur la table distribution
         $stmt = $this->pdo->query("
-            SELECT COALESCE(SUM(d.amount * a.unit_price), 0) as dispatched_amount
+            SELECT COALESCE(SUM(d.attributed_quantity * a.unit_price), 0) as dispatched_amount
             FROM distribution d
-            LEFT JOIN article a ON d.article_id = a.id
+            LEFT JOIN needs n ON d.needs_id = n.id
+            LEFT JOIN article a ON n.article_id = a.id
         ");
         $dispatchedAmount = (float) $stmt->fetch(PDO::FETCH_ASSOC)['dispatched_amount'];
 

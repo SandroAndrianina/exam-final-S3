@@ -30,12 +30,12 @@ class PurchaseController
         $articles = $this->articleRepository->findPurchasableArticles();
         $availableCash = $this->purchaseRepository->getAvailableCashAmount();
         
-        Flight::render('form-purchase.php', [
+        Flight::render('layout.php', [
+            'page' => 'form-purchase.php',
             'villes' => $villes,
             'articles' => $articles,
             'availableCash' => $availableCash
-        ], 'content');
-        Flight::render('layout.php');
+        ]);
     }
 
     public function create(): void
@@ -104,12 +104,12 @@ class PurchaseController
         $villes = $this->cityRepository->findAll();
         $availableCash = $this->purchaseRepository->getAvailableCashAmount();
         
-        Flight::render('list-purchases.php', [
+        Flight::render('layout.php', [
+            'page' => 'list-purchases.php',
             'purchases' => $purchases,
             'villes' => $villes,
             'city_filter' => $city_filter,
             'availableCash' => $availableCash
-        ], 'content');
-        Flight::render('layout.php');
+        ]);
     }
 }
