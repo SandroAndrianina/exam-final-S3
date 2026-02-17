@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord</title>
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
     
 </head>
 <body>
@@ -16,6 +16,7 @@
             <div class="loading" id="loading">Chargement...</div>
         </div>
         
+        <div class="dashboard-layout">
         <div class="stats-grid" id="stats-grid">
             <div class="stat-card info">
                 <h3>Total des Besoins</h3>
@@ -80,6 +81,7 @@
                     <?php endif; ?>
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
     

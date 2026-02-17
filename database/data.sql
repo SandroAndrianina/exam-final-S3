@@ -57,3 +57,97 @@ UPDATE article SET unit_price = 1.00 WHERE name = 'Fonds de secours';
 
 -- Vérification des prix
 SELECT * FROM article;
+
+
+--------------------------------------
+
+-- 1. Ajout des villes manquantes
+INSERT INTO city (name) VALUES 
+('Mananjary'),
+('Farafangana'),
+('Nosy Be'),
+('Morondava')
+ON DUPLICATE KEY UPDATE name=name;
+
+-- Toamasina existe déjà dans les données initiales
+
+-- 2. Ajout des articles manquants avec leurs prix unitaires
+INSERT INTO article (name, type, unit, unit_price) VALUES 
+('Eau', 'in kind', 'L', 1000.00),
+('Bâche', 'materials', 'pièce', 15000.00),
+('Bois', 'materials', 'pièce', 10000.00),
+('Haricots', 'in kind', 'kg', 4000.00),
+('Groupe électrogène', 'materials', 'pièce', 6750000.00)
+ON DUPLICATE KEY UPDATE unit_price=VALUES(unit_price);
+
+-- 3. Mise à jour des prix unitaires des articles existants selon les données fournies
+UPDATE article SET unit_price = 3000.00 WHERE name = 'Riz';
+UPDATE article SET unit_price = 25000.00 WHERE name = 'Tôle';
+UPDATE article SET unit_price = 8000.00 WHERE name = 'Clou';
+UPDATE article SET unit_price = 6000.00 WHERE name = 'Huile';
+UPDATE article SET unit_price = 1.00 WHERE name = 'Fonds de secours';
+
+-- 4. Insertion des dons (gift)
+-- Note: Les ID de city et article seront récupérés dynamiquement
+
+-- Dons pour Toamasina
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 800.00, '2026-02-16', 'Don Toamasina - Ordre 17'),
+((SELECT id FROM article WHERE name = 'Eau' LIMIT 1), 1500.00, '2026-02-15', 'Don Toamasina - Ordre 4'),
+((SELECT id FROM article WHERE name = 'Tôle' LIMIT 1), 120.00, '2026-02-16', 'Don Toamasina - Ordre 23'),
+((SELECT id FROM article WHERE name = 'Bâche' LIMIT 1), 200.00, '2026-02-15', 'Don Toamasina - Ordre 1'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 12000000.00, '2026-02-16', 'Don Toamasina - Argent - Ordre 12'),
+((SELECT id FROM article WHERE name = 'Groupe électrogène' LIMIT 1), 3.00, '2026-02-15', 'Don Toamasina - Ordre 16');
+
+-- Dons pour Mananjary
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 500.00, '2026-02-15', 'Don Mananjary - Ordre 9'),
+((SELECT id FROM article WHERE name = 'Huile' LIMIT 1), 120.00, '2026-02-16', 'Don Mananjary - Ordre 25'),
+((SELECT id FROM article WHERE name = 'Tôle' LIMIT 1), 80.00, '2026-02-15', 'Don Mananjary - Ordre 6'),
+((SELECT id FROM article WHERE name = 'Clou' LIMIT 1), 60.00, '2026-02-16', 'Don Mananjary - Ordre 19'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 6000000.00, '2026-02-15', 'Don Mananjary - Argent - Ordre 3');
+
+-- Dons pour Farafangana
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 600.00, '2026-02-16', 'Don Farafangana - Ordre 21'),
+((SELECT id FROM article WHERE name = 'Eau' LIMIT 1), 1000.00, '2026-02-15', 'Don Farafangana - Ordre 14'),
+((SELECT id FROM article WHERE name = 'Bâche' LIMIT 1), 150.00, '2026-02-16', 'Don Farafangana - Ordre 8'),
+((SELECT id FROM article WHERE name = 'Bois' LIMIT 1), 100.00, '2026-02-15', 'Don Farafangana - Ordre 26'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 8000000.00, '2026-02-16', 'Don Farafangana - Argent - Ordre 10');
+
+-- Dons pour Nosy Be
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 300.00, '2026-02-15', 'Don Nosy Be - Ordre 5'),
+((SELECT id FROM article WHERE name = 'Haricots' LIMIT 1), 200.00, '2026-02-16', 'Don Nosy Be - Ordre 18'),
+((SELECT id FROM article WHERE name = 'Tôle' LIMIT 1), 40.00, '2026-02-15', 'Don Nosy Be - Ordre 2'),
+((SELECT id FROM article WHERE name = 'Clou' LIMIT 1), 30.00, '2026-02-16', 'Don Nosy Be - Ordre 24'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 4000000.00, '2026-02-15', 'Don Nosy Be - Argent - Ordre 7');
+
+-- Dons pour Morondava
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES 
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 700.00, '2026-02-16', 'Don Morondava - Ordre 11'),
+((SELECT id FROM article WHERE name = 'Eau' LIMIT 1), 1200.00, '2026-02-15', 'Don Morondava - Ordre 20'),
+((SELECT id FROM article WHERE name = 'Bâche' LIMIT 1), 180.00, '2026-02-16', 'Don Morondava - Ordre 15'),
+((SELECT id FROM article WHERE name = 'Bois' LIMIT 1), 150.00, '2026-02-15', 'Don Morondava - Ordre 22'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 10000000.00, '2026-02-16', 'Don Morondava - Argent - Ordre 13');
+
+-- 5. Vérification des données insérées
+SELECT 'Villes ajoutées:' as Info;
+SELECT * FROM city;
+
+SELECT 'Articles mis à jour:' as Info;
+SELECT id, name, type, unit, unit_price FROM article ORDER BY type, name;
+
+SELECT 'Dons insérés:' as Info;
+SELECT g.id, a.name as article, g.total_quantity, g.donation_date, g.description 
+FROM gift g 
+LEFT JOIN article a ON g.article_id = a.id 
+ORDER BY g.donation_date ASC, g.id ASC
+LIMIT 30;
+
+-- Statistiques
+SELECT 'Statistiques:' as Info;
+SELECT 
+    (SELECT COUNT(*) FROM city) as total_villes,
+    (SELECT COUNT(*) FROM article) as total_articles,
+    (SELECT COUNT(*) FROM gift) as total_dons;

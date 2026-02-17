@@ -15,6 +15,7 @@ use app\repositories\ArticleRepository;
 use app\controllers\NeedsGiftController;
 use app\controllers\PurchaseController;
 use app\controllers\DashboardController;
+use app\controllers\ResetController;
 use app\repositories\PurchaseRepository;
 use app\services\CityService;
 use app\repositories\DistributionRepository;
@@ -61,6 +62,13 @@ $router->group('', function(Router $router) use ($app) {
         Flight::db(),
         new NeedRepository(Flight::db()),
         new GiftRepository(Flight::db()),
+        new PurchaseRepository(Flight::db())
+    );
+
+    $ResetController = new ResetController(
+        Flight::db(),
+        new GiftRepository(Flight::db()),
+        new NeedRepository(Flight::db()),
         new PurchaseRepository(Flight::db())
     );
 
@@ -113,6 +121,13 @@ $router->post('/bngrc/distribution/create', [$DistributionController, 'create'])
 
 // AJAX : besoins par ville (GET)
 $router->get('/bngrc/needs/by-city/@city_id', [$DistributionController, 'getNeedsByCity']);
+
+// Routes pour la réinitialisation des données
+$router->get('/bngrc/reset', [$ResetController, 'showResetPage']);
+$router->post('/bngrc/reset/all', [$ResetController, 'resetAllData']);
+$router->post('/bngrc/reset/gifts', [$ResetController, 'resetGifts']);
+$router->post('/bngrc/reset/needs', [$ResetController, 'resetNeeds']);
+$router->post('/bngrc/reset/purchases', [$ResetController, 'resetPurchases']);
 
 
 }, [SecurityHeadersMiddleware::class]);

@@ -1,0 +1,182 @@
+/* Dashboard Layout - Harmonisé avec MineExtract */
+
+:root {
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --border: #e2e8f0;
+    --success: #10b981;
+}
+
+.dashboard-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-container h2 {
+    color: var(--text-main);
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Bouton refresh */
+.refresh-section {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-refresh {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-refresh:hover {
+    background: var(--primary-dark);
+}
+
+.loading {
+    display: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Layout principal en 2 colonnes */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* Colonne gauche - Statistiques */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Barre de couleur latérale simplifiée */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+}
+
+.stat-card.info::before { background: var(--primary); }
+.stat-card.success::before { background: var(--success); }
+.stat-card.primary::before { background: #8b5cf6; } /* Violet doux */
+.stat-card.warning::before { background: #f59e0b; } /* Orange doux */
+
+.stat-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-card .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.stat-card .subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Colonne droite - Tableau */
+.purchases-by-city {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 25px;
+    border: 1px solid var(--border);
+}
+
+.purchases-by-city h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 700;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Style du tableau épuré */
+#purchases-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#purchases-table thead th {
+    padding: 12px;
+    text-align: left;
+    background: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+}
+
+#purchases-table tbody tr {
+    border-bottom: 1px solid var(--border);
+}
+
+#purchases-table tbody tr:hover {
+    background-color: #fcfcfd;
+}
+
+#purchases-table tbody td {
+    padding: 14px 12px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+#purchases-table tbody td.amount {
+    text-align: right;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}

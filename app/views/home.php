@@ -15,6 +15,8 @@
         <div class="row">
             <div class="col-6">
                 <div class="sidebar">
+                    <a href="/bngrc/reset" class="btn" style="background-color: #dc3545; color: white; font-weight: 400;">Reset Data</a>
+                    <hr style="margin: 12px 0; border: 1px solid rgba(255,255,255,0.3);">
                     <a href="/bngrc/list-cities" class="btn">List of cities</a>
                     <a href="/bngrc/list-gifts" class="btn">List of gifts</a>
                     <a href="/bngrc/form-gift" class="btn">Form of gift</a>
