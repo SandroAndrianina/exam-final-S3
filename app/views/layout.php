@@ -9,13 +9,16 @@
 <body>
 
     <header>
-        <button>
-        <a href="/" class="home-btn">
-            <!-- <img src="/assets/images/home.png" alt="Home Icon"> -->
-            Home
-        </a>
-        </button>
-        <div class="company-name">BNGRC Corporation</div>
+        <nav>
+            <li><div class="company-name">BNGRC Corporation</div></li>
+            <ul>
+                <li><a href="/bngrc/home">Home</a></li>
+                <li><a href="/bngrc/cities">Cities</a></li>
+                <li><a href="/bngrc/needs">Needs</a></li>
+                <li><a href="/bngrc/gifts">Gifts</a></li>
+               
+            </ul>
+        </nav>
     </header>
 
     <main>
