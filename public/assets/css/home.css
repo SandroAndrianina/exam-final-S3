@@ -22,6 +22,12 @@
       border-left: 4px solid #935007ff;
     }
 
+    .map-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+
     body {
       /* background-image: url("../images/bg.jpg"); */
       background-color: azure;

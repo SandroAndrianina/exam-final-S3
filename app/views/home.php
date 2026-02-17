@@ -26,27 +26,27 @@
 
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" aria-current="page">
+                        <a href="/bngrc/list-cities" class="nav-link" aria-current="page">
                         <i class="bi bi-house-door-fill me-2"></i> List of cities
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="/bngrc/list-gifts" class="nav-link">
                         <i class="bi bi-speedometer2 me-2"></i> List of gifts
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="/bngrc/list-donations" class="nav-link">
                         <i class="bi bi-cart-fill me-2"></i> List of donations
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="/bngrc/form-need" class="nav-link">
                         <i class="bi bi-box-seam-fill me-2"></i> Form of needs
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="/bngrc/list-needs" class="nav-link">
                         <i class="bi bi-people-fill me-2"></i> List of needs
                         </a>
                     </li>
