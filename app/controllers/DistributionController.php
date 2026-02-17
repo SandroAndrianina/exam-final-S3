@@ -1,47 +1,51 @@
 <?php
 namespace app\controllers;
 
-use app\services\DistributionService;
-use app\models\Distribution;
-use Exception;
 
-use Flight;
+use app\models\Distribution;
+use app\repositories\DistributionRepository;
+use flight\Engine;
+
+
 
 class DistributionController
 {
-    protected Engine $app;
-    protected DistributionRepository $DistributionRRepository;
+    protected $app;
+    protected $cityRepository;
+    protected $needsRepository;
+    protected $giftRepository;
+    protected $distributionRepository;
 
-    public function __construct(Engine $app, DistributionRepository $DistributionRepository){
+    public function __construct($app, $cityRepository, $needsRepository, $giftRepository, $distributionRepository)
+    {
         $this->app = $app;
-        $this->DistributionRepository = $DistributionRepository;
-    }
-
-    public function showAllDistributions(){
-        $distributions = $this->DistributionRepository->findAll();
-        $this->app->render('layout.php', [
-            'distributions' => $distributions,
-            'errors'  => [],
-            'page' => 'list-distributions.php'
-        ]);
-    }
-
-    public function createDistribution() {
-        $distribution = new Distribution();
-        $saveDistribution =$this->DistributionRepository->save($distribution);
-        Flight::redirect('/Donation-distribution.php');
-    }
-
-
-    public function treatment() {
-        $giftName = $_POST['gift_id'];
-        $giftId = $this->DistributionRepository->getNameById($giftName);
-        $distribution = new Distribution();
-        $distribution->setGiftId($giftId);
-        $distribution->setAttributedQuantity($_POST['attributed_quantity']);
-        $this->DistributionRepository->save($distribution);
-         Flight::redirect('/Donation-distribution.php');
+        $this->cityRepository = $cityRepository;
+        $this->needsRepository = $needsRepository;
+        $this->giftRepository = $giftRepository;
+        $this->distributionRepository = $distributionRepository;
     }
 
     
+    public function showCreateForm()
+    {
+        $cities = $this->cityRepository->findAll();
+
+        $this->app->render('layout.php', [
+            'villes' => $cities,
+            'errors' => [],
+            'page' => 'form-distribution.php'
+        ]);
+    }
+
+   
+    public function getNeedsByCity($city_id)
+    {
+      
+        $needs = $this->needsRepository->findByCityWithRemainingQuantity($city_id);
+
+        // Retour JSON
+        header('Content-Type: application/json');
+        echo json_encode($needs);
+        exit;
+    }
 }

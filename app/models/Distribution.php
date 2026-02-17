@@ -9,7 +9,7 @@ class Distribution
     private int $attributed_quantity;
     private ?string $affectation_date = null;
 
-    public function __construct(int $gift_id, int $needs_id, int $attributed_quantity)
+    public function __construct(int $gift_id, int $attributed_quantity)
     {
         $this->gift_id = $gift_id;
         $this->needs_id = $needs_id;

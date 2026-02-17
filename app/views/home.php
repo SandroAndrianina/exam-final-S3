@@ -13,6 +13,7 @@
     <a href="/bngrc/list-donations" class="btn">List of donations</a>
     <a href="/bngrc/form-need" class="btn">Form of needs</a>
     <a href="/bngrc/list-needs" class="btn">List of needs</a>
+    <a href="/bngrc/form-distribution" class="btn">Form of distribution</a>
 </body>
 </html>
 

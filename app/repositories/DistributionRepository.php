@@ -53,4 +53,34 @@ class DistributionRepository
              return $result['id'] ?? 0;
     }
 
+    public function createMultiple(array $distributions)
+{
+    try {
+        $this->pdo->beginTransaction();
+
+        $sql = "INSERT INTO distribution 
+                (gift_id, needs_id, attributed_quantity, affectation_date)
+                VALUES (?, ?, ?, ?)";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        foreach ($distributions as $dist) {
+            $stmt->execute([
+                $dist['gift_id'],
+                $dist['needs_id'],
+                $dist['quantity'],
+                $dist['date']
+            ]);
+        }
+
+        $this->pdo->commit();
+
+    } catch (Exception $e) {
+        $this->pdo->rollBack();
+        throw $e;
+    }
+}
+
+
+
 }
