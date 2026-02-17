@@ -20,7 +20,7 @@
                     <hr style="margin: 12px 0; border: 1px solid rgba(255,255,255,0.3);">
                     <a href="/bngrc/list-cities" class="btn">List of cities</a>
                     <a href="/bngrc/list-gifts" class="btn">List of gifts</a>
-                    <a href="/bngrc/form-gift" class="btn">Form of gift</a>
+
                     <a href="/bngrc/form-need" class="btn">Form of needs</a>
                     <a href="/bngrc/list-needs" class="btn">List of needs</a>
                     <a href="/bngrc/form-distribution" class="btn">Form of distribution</a>
