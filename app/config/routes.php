@@ -1,15 +1,20 @@
 <?php
 use app\models\City;
 use app\models\Gift;
+use app\models\Distribution;
+
 use app\controllers\CityController;
 use app\controllers\GiftController;
+use app\controllers\NeedController;
+use app\controllers\DistributionController;
+
 use app\repositories\CityRepository;
 use app\repositories\GiftRepository;
-use app\controllers\NeedController;
 use app\repositories\NeedRepository;
 use app\repositories\ArticleRepository;
 use app\controllers\NeedsGiftController;
 use app\services\CityService;
+use app\repositories\DistributionRepository;
 
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -43,9 +48,19 @@ $router->group('', function(Router $router) use ($app) {
         )
     );
 
+    $DistributionController = new DistributionController(
+    $app,
+    new CityRepository(Flight::db()),
+    new NeedRepository(Flight::db()),
+    new GiftRepository(Flight::db()),
+    new DistributionRepository(Flight::db())
+);
+
     $router->get('/', function() use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
     });
+
+   
 
     $router->get('/bngrc/list-cities', [$CityController, 'showAllCities']);
 
@@ -61,6 +76,14 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/bngrc/list-needs', [$NeedController, 'showList']);
     $router->get('/bngrc/needs/delete/@id', [$NeedController, 'delete']);
     $router->get('/bngrc/city/@cityId/details', [$NeedsGiftController, 'showDetails']);
+
+
+    // Affichage formulaire (GET)
+$router->get('/bngrc/form-distribution', [$DistributionController, 'showCreateForm']);
+$router->post('/bngrc/distribution/create', [$DistributionController, 'create']);
+
+// AJAX : besoins par ville (GET)
+$router->get('/bngrc/needs/by-city/@city_id', [$DistributionController, 'getNeedsByCity']);
 
 
 }, [SecurityHeadersMiddleware::class]);

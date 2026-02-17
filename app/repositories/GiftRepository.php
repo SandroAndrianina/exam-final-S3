@@ -129,6 +129,23 @@ class GiftRepository
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['needId' => $needId]);
         
+
+    public function findAvailableByArticleFIFO($article_id)
+    {
+        $sql = "
+            SELECT g.id,
+                g.total_quantity - IFNULL(SUM(d.attributed_quantity),0) AS remaining_quantity
+            FROM gift g
+            LEFT JOIN distribution d ON g.id = d.gift_id
+            WHERE g.article_id = ?
+            GROUP BY g.id
+            HAVING remaining_quantity > 0
+            ORDER BY g.donation_date ASC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$article_id]);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -128,4 +128,47 @@ class NeedRepository
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function findByCityWithRemainingQuantity($city_id)
+{
+    $sql = "
+        SELECT 
+            n.id,
+            a.name AS article_name,
+            a.unit,
+            (n.quantity_requested - 
+             IFNULL(SUM(d.attributed_quantity),0)) AS remaining_quantity
+        FROM needs n
+        JOIN article a ON n.article_id = a.id
+        LEFT JOIN distribution d ON d.needs_id = n.id
+        WHERE n.city_id = ?
+        GROUP BY n.id
+        HAVING remaining_quantity > 0
+    ";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$city_id]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function getRemainingQuantity($needs_id)
+{
+    $sql = "
+        SELECT n.quantity_requested - IFNULL(SUM(d.attributed_quantity),0) AS remaining
+        FROM needs n
+        LEFT JOIN distribution d ON n.id = d.needs_id
+        WHERE n.id = ?
+        GROUP BY n.id
+    ";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$needs_id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result ? (float)$result['remaining'] : 0;
+}
+
+
+
+
 }
