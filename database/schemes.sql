@@ -48,7 +48,7 @@ CREATE TABLE distribution (
 ) ENGINE=InnoDB;
 
 
-
+--ireto ny changements sy table vaovao ho am le v2
 
 ALTER TABLE article 
 ADD COLUMN unit_price DECIMAL(15,2) DEFAULT 0 COMMENT 'Prix unitaire de l''article';
