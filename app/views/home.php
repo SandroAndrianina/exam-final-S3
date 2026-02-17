@@ -17,9 +17,12 @@
                 <div class="sidebar">
                     <a href="/bngrc/list-cities" class="btn">List of cities</a>
                     <a href="/bngrc/list-gifts" class="btn">List of gifts</a>
-                    <a href="/bngrc/list-donations" class="btn">List of donations</a>
+                    <a href="/bngrc/form-gift" class="btn">Form of gift</a>
                     <a href="/bngrc/form-need" class="btn">Form of needs</a>
                     <a href="/bngrc/list-needs" class="btn">List of needs</a>
+                    <a href="/bngrc/form-purchase" class="btn">Purchase materials</a>
+                    <a href="/bngrc/list-purchases" class="btn">List of purchases</a>
+                    <a href="/bngrc/dashboard" class="btn">Dashboard</a>
                 </div>
             </div>
 

@@ -9,6 +9,9 @@ use app\controllers\NeedController;
 use app\repositories\NeedRepository;
 use app\repositories\ArticleRepository;
 use app\controllers\NeedsGiftController;
+use app\controllers\PurchaseController;
+use app\controllers\DashboardController;
+use app\repositories\PurchaseRepository;
 use app\services\CityService;
 
 use app\middlewares\SecurityHeadersMiddleware;
@@ -42,6 +45,19 @@ $router->group('', function(Router $router) use ($app) {
             new GiftRepository(Flight::db())
         )
     );
+    
+    $PurchaseController = new PurchaseController(
+        new ArticleRepository(Flight::db()),
+        new CityRepository(Flight::db()),
+        new PurchaseRepository(Flight::db())
+    );
+    
+    $DashboardController = new DashboardController(
+        Flight::db(),
+        new NeedRepository(Flight::db()),
+        new GiftRepository(Flight::db()),
+        new PurchaseRepository(Flight::db())
+    );
 
     $router->get('/', function() use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
@@ -60,6 +76,16 @@ $router->group('', function(Router $router) use ($app) {
     $router->post('/bngrc/form-need', [$NeedController, 'create']);
     $router->get('/bngrc/list-needs', [$NeedController, 'showList']);
     $router->get('/bngrc/needs/delete/@id', [$NeedController, 'delete']);
+    
+    // Routes pour la gestion des achats
+    $router->get('/bngrc/form-purchase', [$PurchaseController, 'showCreateForm']);
+    $router->post('/bngrc/form-purchase', [$PurchaseController, 'create']);
+    $router->get('/bngrc/list-purchases', [$PurchaseController, 'showList']);
+    
+    // Routes pour le tableau de bord
+    $router->get('/bngrc/dashboard', [$DashboardController, 'showDashboard']);
+    $router->get('/bngrc/dashboard/refresh', [$DashboardController, 'refreshData']);
+    
     $router->get('/bngrc/city/@cityId/details', [$NeedsGiftController, 'showDetails']);
 
 

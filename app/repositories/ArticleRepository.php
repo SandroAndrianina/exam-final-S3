@@ -19,12 +19,12 @@ class ArticleRepository
      */
     public function findAll(): array
     {
-        $sql = "SELECT id, name, type, unit FROM article ORDER BY name ASC";
+        $sql = "SELECT id, name, type, unit, unit_price FROM article ORDER BY name ASC";
         $stmt = $this->db->query($sql);
         $articles = [];
         
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $article = new Article($row['name'], $row['type'], $row['unit']);
+            $article = new Article($row['name'], $row['type'], $row['unit'], $row['unit_price'] ?? 0.0);
             $article->setId($row['id']);
             $articles[] = $article;
         }
@@ -37,7 +37,7 @@ class ArticleRepository
      */
     public function findById(int $id): ?Article
     {
-        $sql = "SELECT id, name, type, unit FROM article WHERE id = :id";
+        $sql = "SELECT id, name, type, unit, unit_price FROM article WHERE id = :id";
         
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['id' => $id]);
@@ -47,9 +47,27 @@ class ArticleRepository
             return null;
         }
         
-        $article = new Article($row['name'], $row['type'], $row['unit']);
+        $article = new Article($row['name'], $row['type'], $row['unit'], $row['unit_price'] ?? 0.0);
         $article->setId($row['id']);
         
         return $article;
+    }
+    
+    /**
+     * Récupérer les articles achetables (materials et in kind, pas cash)
+     */
+    public function findPurchasableArticles(): array
+    {
+        $sql = "SELECT id, name, type, unit, unit_price FROM article WHERE type IN ('materials', 'in kind') ORDER BY name ASC";
+        $stmt = $this->db->query($sql);
+        $articles = [];
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $article = new Article($row['name'], $row['type'], $row['unit'], $row['unit_price'] ?? 0.0);
+            $article->setId($row['id']);
+            $articles[] = $article;
+        }
+        
+        return $articles;
     }
 }
