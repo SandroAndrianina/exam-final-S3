@@ -15,7 +15,7 @@
 
   <!-- SIDEBAR FIXE (toujours visible) -->
 <div class="row">
-    <div class="col-6">
+    <div class="col-3">
         <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white">
                 
                     <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -53,9 +53,9 @@
                     </ul>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-9">
                 <div class="map-container">
-                    <img src="/assets/images/madagascar.svg" class="img-fluid" alt="Carte de Madagascar">
+                    <img src="/assets/images/madagascar.svg" class="img-fluid" alt="Carte de Madagascar" width= "200%">
                  </div>
     </div>       
 </div>

@@ -6,11 +6,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f0f2f5;
   color: #333;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   overflow-x: hidden;
+  
+  
 }
 
 body::before {
@@ -18,7 +19,7 @@ body::before {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(135deg, #ff930f33, #bf0fff33, #ff1b6b33, #0061ff33);
+  
   opacity: 0.6;
 }
 
@@ -27,7 +28,6 @@ body::after {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(240, 242, 245, 0.8));
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
 }
@@ -81,9 +81,6 @@ header .home-btn {
   transition: color 0.3s ease;
 }
 
-header .home-btn:hover {
-  color: #0061ff;
-}
 
 header .home-btn img {
   width: 28px;
@@ -133,9 +130,6 @@ footer a:hover {
 }
 
 
-.home-btn {
-
-}
 
 
 
