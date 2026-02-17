@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/map-interactive.css">
 
     
 </head>
@@ -37,6 +38,7 @@
         </div>
     </div>
 
+    <script src="/assets/js/map-interactive.js"></script>
 </body>
 
 

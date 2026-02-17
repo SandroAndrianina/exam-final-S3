@@ -151,3 +151,64 @@ SELECT
     (SELECT COUNT(*) FROM city) as total_villes,
     (SELECT COUNT(*) FROM article) as total_articles,
     (SELECT COUNT(*) FROM gift) as total_dons;
+
+
+
+-------------------------
+
+
+-- Dons du 16 février 2026
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 5000000.00, '2026-02-16', 'Don en argent - 5M Ar'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 3000000.00, '2026-02-16', 'Don en argent - 3M Ar'),
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 400.00, '2026-02-16', 'Don de Riz - 400 kg'),
+((SELECT id FROM article WHERE name = 'Eau' LIMIT 1), 600.00, '2026-02-16', 'Don d\'Eau - 600 L');
+
+-- Dons du 17 février 2026
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 4000000.00, '2026-02-17', 'Don en argent - 4M Ar'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 1500000.00, '2026-02-17', 'Don en argent - 1.5M Ar'),
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 6000000.00, '2026-02-17', 'Don en argent - 6M Ar'),
+((SELECT id FROM article WHERE name = 'Tôle' LIMIT 1), 50.00, '2026-02-17', 'Don de Tôle - 50 pièces'),
+((SELECT id FROM article WHERE name = 'Bâche' LIMIT 1), 70.00, '2026-02-17', 'Don de Bâche - 70 pièces'),
+((SELECT id FROM article WHERE name = 'Haricots' LIMIT 1), 100.00, '2026-02-17', 'Don de Haricots - 100 kg'),
+((SELECT id FROM article WHERE name = 'Haricots' LIMIT 1), 88.00, '2026-02-17', 'Don de Haricots - 88 kg');
+
+-- Dons du 18 février 2026
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES
+((SELECT id FROM article WHERE name = 'Riz' LIMIT 1), 2000.00, '2026-02-18', 'Don de Riz - 2000 kg'),
+((SELECT id FROM article WHERE name = 'Tôle' LIMIT 1), 300.00, '2026-02-18', 'Don de Tôle - 300 pièces'),
+((SELECT id FROM article WHERE name = 'Eau' LIMIT 1), 5000.00, '2026-02-18', 'Don d\'Eau - 5000 L');
+
+-- Dons du 19 février 2026
+INSERT INTO gift (article_id, total_quantity, donation_date, description) VALUES
+((SELECT id FROM article WHERE name = 'Fonds de secours' LIMIT 1), 20000000.00, '2026-02-19', 'Don en argent - 20M Ar'),
+((SELECT id FROM article WHERE name = 'Bâche' LIMIT 1), 500.00, '2026-02-19', 'Don de Bâche - 500 pièces');
+
+-- Vérification des insertions
+SELECT 'Dons insérés avec succès' as Resultat;
+
+SELECT 
+    g.id,
+    a.name as Article,
+    g.total_quantity as Quantite,
+    g.donation_date as Date,
+    g.description as Description
+FROM gift g
+JOIN article a ON g.article_id = a.id
+WHERE g.donation_date >= '2026-02-16'
+ORDER BY g.donation_date, g.id;
+
+-- Statistiques
+SELECT 
+    'Total des nouveaux dons' as Info,
+    COUNT(*) as Nombre_dons,
+    SUM(CASE WHEN a.name = 'Fonds de secours' THEN g.total_quantity ELSE 0 END) as Total_Argent_Ar,
+    SUM(CASE WHEN a.name = 'Riz' THEN g.total_quantity ELSE 0 END) as Total_Riz_kg,
+    SUM(CASE WHEN a.name = 'Eau' THEN g.total_quantity ELSE 0 END) as Total_Eau_L,
+    SUM(CASE WHEN a.name = 'Tôle' THEN g.total_quantity ELSE 0 END) as Total_Tole,
+    SUM(CASE WHEN a.name = 'Bâche' THEN g.total_quantity ELSE 0 END) as Total_Bache,
+    SUM(CASE WHEN a.name = 'Haricots' THEN g.total_quantity ELSE 0 END) as Total_Haricots_kg
+FROM gift g
+JOIN article a ON g.article_id = a.id
+WHERE g.donation_date >= '2026-02-16';

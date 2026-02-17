@@ -16,6 +16,7 @@ use app\controllers\NeedsGiftController;
 use app\controllers\PurchaseController;
 use app\controllers\DashboardController;
 use app\controllers\ResetController;
+use app\controllers\ApiController;
 use app\repositories\PurchaseRepository;
 use app\services\CityService;
 use app\repositories\DistributionRepository;
@@ -71,6 +72,8 @@ $router->group('', function(Router $router) use ($app) {
         new NeedRepository(Flight::db()),
         new PurchaseRepository(Flight::db())
     );
+
+    $ApiController = new ApiController(Flight::db());
 
     $DistributionController = new DistributionController(
     $app,
@@ -128,6 +131,10 @@ $router->post('/bngrc/reset/all', [$ResetController, 'resetAllData']);
 $router->post('/bngrc/reset/gifts', [$ResetController, 'resetGifts']);
 $router->post('/bngrc/reset/needs', [$ResetController, 'resetNeeds']);
 $router->post('/bngrc/reset/purchases', [$ResetController, 'resetPurchases']);
+
+// Routes API pour la carte interactive
+$router->get('/bngrc/api/cities-stats', [$ApiController, 'getCitiesStats']);
+$router->get('/bngrc/api/city/@id', [$ApiController, 'getCityDetails']);
 
 
 }, [SecurityHeadersMiddleware::class]);

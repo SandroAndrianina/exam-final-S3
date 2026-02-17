@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Carte Interactive</title>
+    <link rel="stylesheet" href="/assets/css/map-interactive.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        
+        .instructions ul {
+            margin: 10px 0;
+        }
+        
+        .console-log {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.9);
+            color: #0f0;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            max-width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 20000;
+        }
+        
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .map-container svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🗺️ Test de la Carte Interactive de Madagascar</h1>
+        
+        <div class="instructions">
+            <h3>Instructions de test :</h3>
+            <ul>
+                <li>✅ <strong>Survolez</strong> une région pour voir le tooltip</li>
+                <li>✅ <strong>Cliquez</strong> sur une région pour voir le modal</li>
+                <li>✅ La <strong>légende</strong> doit rester visible en bas à gauche</li>
+                <li>✅ Ouvrez la <strong>console</strong> (F12) pour voir les logs</li>
+            </ul>
+        </div>
+        
+        <div class="map-container">
+            <img src="/assets/images/madagascar.svg" alt="Carte de Madagascar">
+        </div>
+    </div>
+    
+    <div class="console-log" id="console-log">
+        <strong>📊 Console Debug:</strong><br>
+        <div id="log-content">En attente...</div>
+    </div>
+    
+    <script src="/assets/js/map-interactive.js"></script>
+    <script>
+        // Afficher les logs dans une div pour faciliter le debug
+        const originalLog = console.log;
+        const logDiv = document.getElementById('log-content');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const message = args.join(' ');
+            logDiv.innerHTML = message + '<br>' + logDiv.innerHTML;
+            
+            // Limiter à 10 lignes
+            const lines = logDiv.innerHTML.split('<br>');
+            if (lines.length > 10) {
+                logDiv.innerHTML = lines.slice(0, 10).join('<br>');
+            }
+        };
+        
+        // Afficher les erreurs
+        window.addEventListener('error', function(e) {
+            console.log('❌ ERREUR: ' + e.message);
+        });
+    </script>
+</body>
+</html>
