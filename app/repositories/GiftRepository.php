@@ -128,7 +128,9 @@ class GiftRepository
     
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['needId' => $needId]);
-        
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function findAvailableByArticleFIFO($article_id)
     {
