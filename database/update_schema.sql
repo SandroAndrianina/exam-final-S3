@@ -2,9 +2,9 @@
 
 USE ETU4392_ETU4110_ETU4016;
 
--- Ajouter le prix unitaire aux articles
-ALTER TABLE article 
-ADD COLUMN unit_price DECIMAL(15,2) DEFAULT 0 COMMENT 'Prix unitaire de l''article';
+-- Ajouter le prix unitaire aux articles (DÉJÀ FAIT - commenté pour éviter l'erreur)
+-- ALTER TABLE article 
+-- ADD COLUMN unit_price DECIMAL(15,2) DEFAULT 0 COMMENT 'Prix unitaire de l''article';
 
 -- Créer la table des achats
 CREATE TABLE IF NOT EXISTS purchase (
