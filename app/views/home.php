@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/assets/css/index.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sidebar fixe Bootstrap 5</title>
+  
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap-icons.min.css">
+   <script src="/assets/js/bootstrap.bundle.min.js"></script>
+   <link rel="stylesheet" href="/assets/css/home.css">
+   
 </head>
+<body class="d-flex">
 
-<body>
-    <!-- <div class="container-fluid">
-        <div class="row">
-            <div class="col-6">
-                <div class="sidebar">
-                    <a href="/bngrc/list-cities" class="btn">List of cities</a>
-                    <a href="/bngrc/list-gifts" class="btn">List of gifts</a>
-                    <a href="/bngrc/list-donations" class="btn">List of donations</a>
-                    <a href="/bngrc/form-need" class="btn">Form of needs</a>
-                    <a href="/bngrc/list-needs" class="btn">List of needs</a>
-                </div>
-            </div>
+  <!-- SIDEBAR FIXE (toujours visible) -->
+  <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white">
+    
+    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4 fw-bold">BNGRC</span>
+    </a>
+    
+    <hr class="border-secondary">
 
-            <div class="col-6">
-                <div class="map-container">
-                    <img src="/assets/images/madagascar.svg" class="img-fluid" alt="Carte de Madagascar">
-                </div>
-            </div>
-        </div>
-    </div> -->
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <i class="bi bi-house-door-fill me-2"></i> List of cities
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link">
+          <i class="bi bi-speedometer2 me-2"></i> List of gifts
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link">
+          <i class="bi bi-cart-fill me-2"></i> List of donations
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link">
+          <i class="bi bi-box-seam-fill me-2"></i> Form of needs
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link">
+          <i class="bi bi-people-fill me-2"></i> List of needs
+        </a>
+      </li>
+    </ul>
 
+    <hr class="border-secondary">
 
-    <div class="offcanvas offcanvas-start" id="demo">
-  <div class="offcanvas-header">
-    <h1 class="offcanvas-title">Heading</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+   
   </div>
-  <div class="offcanvas-body">
-    <p>Some text lorem ipsum.</p>
-    <p>Some text lorem ipsum.</p>
-    <p>Some text lorem ipsum.</p>
-    <button class="btn btn-secondary" type="button">A Button</button>
-  </div>
-</div>
 
-<div class="container-fluid mt-3">
-  <h3>Offcanvas Sidebar</h3>
-  <p>Offcanvas is similar to modals, except that it is often used as a sidebar.</p>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-    Open Offcanvas Sidebar
-  </button>
-</div>
+
+  
+ 
 </body>
-
-
 </html>
