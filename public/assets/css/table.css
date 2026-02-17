@@ -1,0 +1,391 @@
+/* table.css - Style Uiverse rétro/moderne + full glassmorphism vibrant */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+    background: #f0f2f5;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(135deg, #ff930f33, #bf0fff33, #ff1b6b33, #0061ff33);
+    opacity: 0.6;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(240, 242, 245, 0.8));
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+}
+
+/* Blobs animés en arrière-plan */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.7;
+    animation: float 20s infinite ease-in-out;
+    z-index: -2;
+}
+
+.blob:nth-child(1) { width: 400px; height: 400px; background: #ffcc00; left: -100px; top: -150px; animation-delay: 0s; }
+.blob:nth-child(2) { width: 500px; height: 500px; background: #000000; right: -150px; top: 20%; animation-delay: 5s; }
+.blob:nth-child(3) { width: 350px; height: 350px; background: #ff930f; left: 10%; bottom: -100px; animation-delay: 10s; }
+.blob:nth-child(4) { width: 450px; height: 450px; background: #e6b800; right: 5%; bottom: 10%; animation-delay: 15s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-60px) rotate(10deg); }
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0 20px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+
+
+header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header .logo img {
+    height: 50px;
+}
+
+header .logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+header .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .menu a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+header .menu a:hover {
+    background: rgba(0, 97, 255, 0.2);
+    color: #0061ff;
+    transform: translateY(-2px);
+}
+
+/* Main */
+main {
+    margin-top: 90px;
+    padding: 40px 0;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tableau - Style Uiverse rétro/moderne + glassmorphism */
+table {
+    --main-color: #0061ff;
+    --main-focus: #bf0fff;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--main-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 4px 4px var(--main-color), 0 15px 40px -5px rgba(209, 27, 255, 0.26);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+table:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px var(--main-focus), 0 20px 50px -5px rgba(191, 15, 255, 0.35);
+}
+
+table th, table td {
+    padding: 16px;
+    text-align: center;
+}
+
+table th {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+table tr:hover {
+    background: rgba(0, 97, 255, 0.15);
+    transition: background 0.3s;
+}
+
+table .total-row {
+    background: rgba(0, 97, 255, 0.25) !important;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Images */
+.hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 21px;
+    margin-bottom: 30px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+}
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 16px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: translateY(-8px);
+    box-shadow: 6px 6px var(--main-focus);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    table {
+        margin: 30px auto;
+        font-size: 14px;
+    }
+    
+    table th, table td {
+        padding: 12px 8px;
+    }
+}
+
+/* Footer fixe */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 20px 0;
+    text-align: center;
+    color: #555;
+    font-weight: 600;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-validate,
+.btn-modify {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px var(--main-color);
+    border: 2px solid var(--main-color);
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+.btn-validate {
+    background: rgba(0, 97, 255, 0.15);
+}
+
+.btn-validate:hover {
+    background: var(--main-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 6px 6px var(--main-focus);
+}
+
+.btn-modify {
+    background: rgba(191, 15, 255, 0.1);
+}
+
+.btn-modify:hover {
+    background: var(--main-focus);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 6px 6px var(--main-color);
+}
+
+.btn-validate:active,
+.btn-modify:active {
+    transform: translateY(3px);
+}
+
+.field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 17px;
+    font-weight: 600;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px var(--main-color);
+}
+
+button:hover {
+    border-color: var(--main-focus);
+    background: rgba(191, 15, 255, 0.15);
+    box-shadow: 0 0 20px rgba(191, 15, 255, 0.4), 6px 6px var(--main-focus);
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 2px 2px var(--main-focus);
+}
+
+select,
+input[type="datetime-local"],
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px var(--main-color);
+}
+
+/* Ajoute ceci à la fin de table.css ou dans la section des inputs */
+input[type="datetime-local"]:focus,
+input:focus {
+    outline: none;
+    border-color: var(--main-focus);
+    box-shadow: 0 0 0 4px rgba(191, 15, 255, 0.2), 6px 6px var(--main-focus);
+    transform: translateY(-2px);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* Style du conteneur du filtre pour ressembler au form-container */
+.form-container {
+    --main-color: #0061ff;
+    --main-focus: #bf0fff;
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--main-color);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 4px 4px var(--main-color), 0 15px 40px -5px rgba(209, 27, 255, 0.26);
+    transition: all 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px var(--main-focus), 0 20px 50px -5px rgba(191, 15, 255, 0.35);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}

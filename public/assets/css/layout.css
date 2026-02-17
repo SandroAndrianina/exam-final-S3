@@ -1,0 +1,133 @@
+/* Style global light - Version moderne avec effet glassmorphism + blobs colorés */
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, #ff930f33, #bf0fff33, #ff1b6b33, #0061ff33);
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(240, 242, 245, 0.8));
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* Blobs animés en arrière-plan */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: float 20s infinite ease-in-out;
+  z-index: -2;
+}
+
+.blob:nth-child(1) { width: 400px; height: 400px; background: #ffcc00; left: -100px; top: -150px; animation-delay: 0s; }
+.blob:nth-child(2) { width: 500px; height: 500px; background: #000000; right: -150px; top: 20%; animation-delay: 5s; }
+.blob:nth-child(3) { width: 350px; height: 350px; background: #ff930f; left: 10%; bottom: -100px; animation-delay: 10s; }
+.blob:nth-child(4) { width: 450px; height: 450px; background: #e6b800; right: 5%; bottom: 10%; animation-delay: 15s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-60px) rotate(10deg); }
+}
+
+/* Header fixe */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+header .home-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+header .home-btn:hover {
+  color: #0061ff;
+}
+
+header .home-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+header .company-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+/* Contenu principal */
+main {
+  flex: 1;
+  padding: 100px 40px 100px;
+  z-index: 1;
+}
+
+/* Footer fixe en bas */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 20px 40px;
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+}
+
+footer a {
+  color: #0061ff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

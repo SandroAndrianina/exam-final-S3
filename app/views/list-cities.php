@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of users</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <title>List of cities</title>
+    <link rel="stylesheet" href="/assets/css/table.css">
 </head>
 <body>
     
