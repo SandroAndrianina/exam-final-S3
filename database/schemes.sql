@@ -75,3 +75,21 @@ CREATE INDEX idx_purchase_city ON purchase(city_id);
 CREATE INDEX idx_purchase_date ON purchase(purchase_date);
 CREATE INDEX idx_article_type ON article(type);
 
+--vente de don:
+-- Table reduction
+CREATE TABLE reduction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    percentage DECIMAL(5,2) NOT NULL
+);
+
+-- Table sale
+CREATE TABLE sale (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT NOT NULL,
+    quantity DECIMAL(15,2) NOT NULL,
+    price DECIMAL(15,2) NOT NULL,
+    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reduction_id INT,
+    FOREIGN KEY (article_id) REFERENCES article(id),
+    FOREIGN KEY (reduction_id) REFERENCES reduction(id)
+);

@@ -212,3 +212,5 @@ SELECT
 FROM gift g
 JOIN article a ON g.article_id = a.id
 WHERE g.donation_date >= '2026-02-16';
+INSERT INTO reduction (percentage) VALUES 
+(5.00);   -- 5% de réduction
