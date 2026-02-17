@@ -33,3 +33,27 @@ INSERT INTO distribution (gift_id, needs_id, attributed_quantity, affectation_da
 (3, 1, 800000.00, NOW()), 
 (2, 2, 30.00, NOW());
 
+
+
+-- Mise à jour des prix unitaires pour chaque article
+-- Prix basés sur le marché malgache (Ariary)
+
+USE ETU4392_ETU4110_ETU4016;
+
+-- Riz : 4500 Ar/kg (prix moyen du riz local)
+UPDATE article SET unit_price = 4500.00 WHERE name = 'Riz';
+
+-- Huile : 9000 Ar/litre (huile végétale standard)
+UPDATE article SET unit_price = 9000.00 WHERE name = 'Huile';
+
+-- Tôle : 75000 Ar/pièce (tôle ondulée standard 2m)
+UPDATE article SET unit_price = 75000.00 WHERE name = 'Tôle';
+
+-- Clou : 18000 Ar/kg (clous assortis)
+UPDATE article SET unit_price = 18000.00 WHERE name = 'Clou';
+
+-- Fonds de secours : 1 Ar (argent = argent, pas de conversion)
+UPDATE article SET unit_price = 1.00 WHERE name = 'Fonds de secours';
+
+-- Vérification des prix
+SELECT * FROM article;

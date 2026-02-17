@@ -108,10 +108,28 @@ class NeedRepository
     
     public function delete(int $id): bool
     {
-        $sql = "DELETE FROM needs WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        
-        return $stmt->execute(['id' => $id]);
+        try {
+            // Commencer une transaction
+            $this->db->beginTransaction();
+            
+            // Supprimer d'abord les distributions associées
+            $sqlDistribution = "DELETE FROM distribution WHERE needs_id = :id";
+            $stmtDistribution = $this->db->prepare($sqlDistribution);
+            $stmtDistribution->execute(['id' => $id]);
+            
+            // Puis supprimer le besoin
+            $sqlNeed = "DELETE FROM needs WHERE id = :id";
+            $stmtNeed = $this->db->prepare($sqlNeed);
+            $stmtNeed->execute(['id' => $id]);
+            
+            // Valider la transaction
+            $this->db->commit();
+            return true;
+        } catch (\Exception $e) {
+            // Annuler la transaction en cas d'erreur
+            $this->db->rollBack();
+            return false;
+        }
     }
 
     public function getNeedsByCityId(int $cityId): array
