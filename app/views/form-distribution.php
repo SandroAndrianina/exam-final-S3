@@ -3,6 +3,18 @@ if (!isset($villes)) {
     die("Erreur : \$villes n'existe pas dans form-distribution.php");
 }
 ?>
+
+
+<?php if (!empty($errors)): ?>
+    <div class="errors">
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
