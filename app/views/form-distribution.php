@@ -14,7 +14,7 @@ if (!isset($villes)) {
 
 <h2>Distribution de donation</h2>
 
-<form action="/bngrc/form-distribution" method="post">
+<form action="/bngrc/distribution/create" method="post">
 
     <!-- 🔽 Ville -->
     <div class="form-group">
