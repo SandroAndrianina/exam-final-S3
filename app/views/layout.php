@@ -9,10 +9,12 @@
 <body>
 
     <header>
+        <button>
         <a href="/" class="home-btn">
             <!-- <img src="/assets/images/home.png" alt="Home Icon"> -->
             Home
         </a>
+        </button>
         <div class="company-name">BNGRC Corporation</div>
     </header>
 
