@@ -7,6 +7,7 @@ use app\controllers\CityController;
 use app\controllers\GiftController;
 use app\controllers\NeedController;
 use app\controllers\DistributionController;
+use app\controllers\SaleController;
 
 use app\repositories\CityRepository;
 use app\repositories\GiftRepository;
@@ -18,6 +19,12 @@ use app\controllers\DashboardController;
 use app\repositories\PurchaseRepository;
 use app\services\CityService;
 use app\repositories\DistributionRepository;
+
+use app\repositories\SaleRepository;
+use app\repositories\ReductionRepository;
+use app\repositories\NeedsRepository;
+use app\services\GiftService;
+use app\services\SaleService;
 
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -65,12 +72,23 @@ $router->group('', function(Router $router) use ($app) {
     );
 
     $DistributionController = new DistributionController(
+        $app,
+        new CityRepository(Flight::db()),
+        new NeedRepository(Flight::db()),
+        new GiftRepository(Flight::db()),
+        new DistributionRepository(Flight::db())
+    );
+
+    $SaleController = new SaleController(
     $app,
-    new CityRepository(Flight::db()),
-    new NeedRepository(Flight::db()),
-    new GiftRepository(Flight::db()),
-    new DistributionRepository(Flight::db())
+    new SaleRepository(Flight::db()),
+    new GiftService(
+        new GiftRepository(Flight::db())
+    ),
+    new SaleService(new ReductionRepository(Flight::db())),
+    new ReductionRepository(Flight::db())
 );
+
 
     $router->get('/', function() use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
@@ -106,13 +124,18 @@ $router->group('', function(Router $router) use ($app) {
     
     $router->get('/bngrc/city/@cityId/details', [$NeedsGiftController, 'showDetails']);
 
+        // Affichage formulaire (GET)
+    $router->get('/bngrc/form-distribution', [$DistributionController, 'showCreateForm']);
+    $router->post('/bngrc/distribution/create', [$DistributionController, 'create']);
 
-    // Affichage formulaire (GET)
-$router->get('/bngrc/form-distribution', [$DistributionController, 'showCreateForm']);
-$router->post('/bngrc/distribution/create', [$DistributionController, 'create']);
+    // AJAX : besoins par ville (GET)
+    $router->get('/bngrc/needs/by-city/@city_id', [$DistributionController, 'getNeedsByCity']);
 
-// AJAX : besoins par ville (GET)
-$router->get('/bngrc/needs/by-city/@city_id', [$DistributionController, 'getNeedsByCity']);
+        // Route affichage formulaire
+    $router->get('/bngrc/form-sale', [$SaleController, 'showForm']);
+
+    // Route création vente
+    $router->post('/bngrc/form-sale', [$SaleController, 'saveSale']);
 
 
 }, [SecurityHeadersMiddleware::class]);

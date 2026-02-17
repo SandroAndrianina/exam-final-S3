@@ -150,4 +150,17 @@ class GiftRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+        public function findEnableArticle(): array
+    {
+        $stmt = $this->db->query("
+            SELECT g.id, a.name, a.unit, g.total_quantity
+            FROM gift g
+            JOIN article a ON g.article_id = a.id
+            WHERE g.article_id NOT IN (
+                SELECT DISTINCT article_id FROM needs WHERE quantity_requested > 0
+            )
+        ");
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

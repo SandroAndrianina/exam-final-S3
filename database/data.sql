@@ -57,3 +57,6 @@ UPDATE article SET unit_price = 1.00 WHERE name = 'Fonds de secours';
 
 -- Vérification des prix
 SELECT * FROM article;
+
+INSERT INTO reduction (percentage) VALUES 
+(5.00);   -- 5% de réduction

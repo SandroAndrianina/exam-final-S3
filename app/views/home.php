@@ -23,6 +23,7 @@
                     <a href="/bngrc/form-distribution" class="btn">Form of distribution</a>
                     <a href="/bngrc/form-purchase" class="btn">Purchase materials</a>
                     <a href="/bngrc/list-purchases" class="btn">List of purchases</a>
+                    <a href="/bngrc/form-sale" class="btn">Form of sale</a>
                     <a href="/bngrc/dashboard" class="btn">Dashboard</a>
                 </div>
             </div>
