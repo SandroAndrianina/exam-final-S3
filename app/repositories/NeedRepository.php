@@ -139,7 +139,7 @@ class NeedRepository
         HAVING remaining_quantity > 0
     ";
 
-    $stmt = $this->pdo->prepare($sql);
+    $stmt = $this->db->prepare($sql);
     $stmt->execute([$city_id]);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -155,7 +155,7 @@ public function getRemainingQuantity($needs_id)
         GROUP BY n.id
     ";
 
-    $stmt = $this->pdo->prepare($sql);
+    $stmt = $this->db->prepare($sql);
     $stmt->execute([$needs_id]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

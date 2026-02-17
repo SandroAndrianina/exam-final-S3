@@ -46,11 +46,7 @@ $router->group('', function(Router $router) use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
     });
 
-    $router->get('/bngrc/form-distribution',  function() use ($app) {
-    $app->render('layout.php', [
-        'page' => 'form-distribution.php',
-    ]);
-});
+   
 
     $router->get('/bngrc/list-cities', [$CityController, 'showAllCities']);
 
@@ -61,16 +57,12 @@ $router->group('', function(Router $router) use ($app) {
     $router->get('/bngrc/list-needs', [$NeedController, 'showList']);
     $router->get('/bngrc/needs/delete/@id', [$NeedController, 'delete']);
 
-    $router->post('/bngrc/form-distribution', [$DistributionController, 'treatment']);
-    $router->get('/bngrc/form-distribution', [$NeedController, 'showCreateForm']);
-    $router->post('/bngrc/form-distribution', [$NeedController, 'create']);
-
     // Affichage formulaire (GET)
 $router->get('/bngrc/form-distribution', [$DistributionController, 'showCreateForm']);
 $router->post('/bngrc/distribution/create', [$DistributionController, 'create']);
 
 // AJAX : besoins par ville (GET)
-$router->get('/bngrc/needs/by-city/{city_id}', [$DistributionController, 'getNeedsByCity']);
+$router->get('/bngrc/needs/by-city/@city_id', [$DistributionController, 'getNeedsByCity']);
 
 
 }, [SecurityHeadersMiddleware::class]);

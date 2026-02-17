@@ -8,6 +8,7 @@ if (!isset($villes)) {
 <head>
     <meta charset="UTF-8">
     <title>Distribution</title>
+     <link rel="stylesheet" href="/assets/css/form.css">
 </head>
 <body>
 
@@ -60,44 +61,11 @@ if (!isset($villes)) {
 
 </form>
 
-<!-- ✅ SCRIPT AJAX -->
-<script>
-document.getElementById('ville').addEventListener('change', function () {
-
-    const cityId = this.value;
-    const needsSelect = document.getElementById('needs');
-
-    // Reset dropdown
-    needsSelect.innerHTML = '<option value="">Chargement...</option>';
-
-    if (cityId === "") {
-        needsSelect.innerHTML = '<option value="">-- Choisir d\'abord une ville --</option>';
-        return;
-    }
-
-    fetch(`/bngrc/needs/by-city/${cityId}`)
-        .then(response => response.json())
-        .then(data => {
-
-            needsSelect.innerHTML = '<option value="">-- Choisir un besoin --</option>';
-
-            data.forEach(function (need) {
-
-                const option = document.createElement('option');
-                option.value = need.id;
-               option.textContent = need.article_name + 
-    " (" + need.unit + ") - Restant: " + need.remaining_quantity;
-
-
-                needsSelect.appendChild(option);
-            });
-
-        })
-        .catch(error => {
-            needsSelect.innerHTML = '<option value="">Erreur de chargement</option>';
-        });
-});
-</script>
+<!-- Chargement du script externe -->
+<script 
+    src="/assets/js/distribution.js" 
+    nonce="<?= htmlspecialchars($nonce) ?>"
+></script>
 
 </body>
 </html>

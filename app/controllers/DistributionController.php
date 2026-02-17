@@ -26,16 +26,18 @@ class DistributionController
     }
 
     
-    public function showCreateForm()
-    {
-        $cities = $this->cityRepository->findAll();
+public function showCreateForm()
+{
+    $cities = $this->cityRepository->findAll();
+    $nonce = $this->app->get('csp_nonce');  // ← ajoute cette ligne
 
-        $this->app->render('layout.php', [
-            'villes' => $cities,
-            'errors' => [],
-            'page' => 'form-distribution.php'
-        ]);
-    }
+    $this->app->render('layout.php', [
+        'villes' => $cities,
+        'errors' => [],
+        'page'   => 'form-distribution.php',
+        'nonce'  => $nonce  // ← passe-le ici
+    ]);
+}
 
    
     public function getNeedsByCity($city_id)
