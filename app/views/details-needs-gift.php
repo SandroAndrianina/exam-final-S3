@@ -17,7 +17,7 @@ if (!$name_city) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails besoins et dons - Ville <?php echo $cityId; ?></title>
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/details-needs-gifts.css">
 </head>
 <body>
     

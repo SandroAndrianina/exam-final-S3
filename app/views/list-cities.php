@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of cities</title>
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/list-cities.css">
 </head>
 <body>
     
@@ -12,6 +12,7 @@
         <h1>List of cities</h1>
 
         <section class="cities-list">
+<div class="list">
     <?php if(!empty($cities)) : ?>
         <table>
             <thead>
@@ -36,6 +37,7 @@
     <?php else : ?>
         <p>No city found.</p>
     <?php endif; ?>
+    </div>
 </section>
 
     </main>

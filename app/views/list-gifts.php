@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of gifts</title>
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/list-gifts.css">
 </head>
 <body>
     
@@ -13,7 +13,7 @@
     <div>
         <a href="/bngrc/form-gift" class="btn btn-primary">+ Ajouter un don</a>
     </div>
-    
+    <div class="list">
     <?php if (empty($gifts)): ?>
         <p>Aucun don enregistré pour le moment.</p>
     <?php else: ?>
@@ -53,9 +53,8 @@
             </tbody>
         </table>
     <?php endif; ?>
+    </div>
 </section>
-
     </main>
-  
 </body>
 </html>

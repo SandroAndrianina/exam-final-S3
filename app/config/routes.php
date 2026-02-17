@@ -47,6 +47,10 @@ $router->group('', function(Router $router) use ($app) {
         $app->render('layout.php', ['page' => 'home.php']);
     });
 
+    $router->get('/bngrc/carte', function() use ($app) {
+        $app->render('layout.php', ['page' => 'map.php']);
+    });
+
     $router->get('/bngrc/list-cities', [$CityController, 'showAllCities']);
 
     // Routes pour la gestion des dons

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Besoins</title>
-    <link rel="stylesheet" href="/assets/css/table.css">
+    <link rel="stylesheet" href="/assets/css/list-gifts.css">
 </head>
 <body>
     
@@ -13,7 +13,7 @@
     <div>
         <a href="/bngrc/form-need" class="btn btn-primary">+ Ajouter un besoin</a>
     </div>
-    
+    <div class="list">
     <?php if (empty($needs)): ?>
         <p>Aucun besoin enregistré pour le moment.</p>
     <?php else: ?>
@@ -54,6 +54,6 @@
             </tbody>
         </table>
     <?php endif; ?>
-    
+    </div>
 </body>
 </html>

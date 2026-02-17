@@ -1,0 +1,136 @@
+body{
+    background-image: url('/assets/images/accueil.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* MAIN */
+main {
+    padding: 120px 40px 60px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* TITRES */
+main h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 0.8s ease;
+}
+
+main h2 {
+    margin: 40px 0 20px;
+    animation: fadeLeft 0.7s ease;
+}
+
+/* SECTION GLASS */
+.details-section {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+
+    animation: glassFade 0.8s ease;
+}
+
+/* TABLE GLASS */
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 35px;
+    color: #fff;
+}
+
+/* EN-TÊTE */
+.details-table thead {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.details-table th {
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* CELLULES */
+.details-table td {
+    padding: 15px;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* LIGNES */
+.details-table tbody tr {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.details-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.01);
+}
+
+/* SOUS-TOTAL */
+.category-total {
+    background: rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+}
+
+/* TEXTE SECONDAIRE */
+.details-table small {
+    display: block;
+    opacity: 0.8;
+    font-size: 0.85rem;
+}
+
+.details-table em {
+    opacity: 0.75;
+}
+
+/* MESSAGE VIDE */
+.details-section p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 30px;
+}
+
+/* ANIMATIONS */
+@keyframes glassFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

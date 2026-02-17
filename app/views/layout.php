@@ -12,10 +12,11 @@
         <nav>
             <li><div class="company-name">BNGRC Corporation</div></li>
             <ul>
-                <li><a href="/bngrc/home">Home</a></li>
-                <li><a href="/bngrc/cities">Cities</a></li>
-                <li><a href="/bngrc/needs">Needs</a></li>
-                <li><a href="/bngrc/gifts">Gifts</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/bngrc/list-cities">Cities</a></li>
+                <li><a href="/bngrc/list-needs">Needs</a></li>
+                <li><a href="/bngrc/list-gifts">Gifts</a></li>
+                <li><a href="/bngrc/carte">Map</a></li>
                
             </ul>
         </nav>

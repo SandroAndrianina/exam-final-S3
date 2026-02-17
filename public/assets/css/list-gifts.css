@@ -1,0 +1,95 @@
+/* Conteneur glass */
+.list {
+    width: 95%;
+    margin: 40px auto;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+    animation: glassFadeIn 0.8s ease-out;
+}
+
+/* Animation d’apparition */
+@keyframes glassFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tableau */
+.list table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #115DBF;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* En-tête */
+.list thead {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.list th {
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Lignes */
+.list td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hover ligne (animation douce) */
+.list tbody tr {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.list tbody tr:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.01);
+}
+
+/* Bouton supprimer (glass) */
+.list .btn-danger {
+    background: #115DBF;
+    border: 1px solid  #115DBF;
+    backdrop-filter: blur(6px);
+    color: #ffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.list .btn-danger:hover {
+    background:  #115DBF;
+    transform: scale(1.05);
+}
+
+/* Message "aucun don" */
+.list p {
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+
+
+body{
+    background-image: url("../images/accueil.jpg");
+}
